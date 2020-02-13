@@ -26,5 +26,7 @@ public class LoginController {
                 return responseBody;
             }
         }
+        else
+            return null;
     }
 }
