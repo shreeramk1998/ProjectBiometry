@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e137de6-f55d-4725-ab94-c35d0ec79e4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/SubAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/repository/SubAdminRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/a9268933-97bc-418c-815f-0f7f8752d1ff.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a9268933-97bc-418c-815f-0f7f8752d1ff.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Dept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Dept.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/repository/DeptRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/repository/DeptRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Dept.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Dept.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/DeptRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/DeptRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +47,13 @@
         <item name="root" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="biometry: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="root" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="biometry: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="sub_admin: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -174,10 +190,10 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="543" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832@0.0.1536.832" timestamp="1581579025720" />
-    <state x="359" y="16" key="CommitChangelistDialog2" timestamp="1581593462248">
+    <state x="359" y="16" key="CommitChangelistDialog2" timestamp="1581614412256">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="359" y="16" key="CommitChangelistDialog2/0.0.1536.832@0.0.1536.832" timestamp="1581593462248" />
+    <state x="359" y="16" key="CommitChangelistDialog2/0.0.1536.832@0.0.1536.832" timestamp="1581614412256" />
     <state x="93" y="93" width="1350" height="646" key="DiffContextDialog" timestamp="1581593979757">
       <screen x="0" y="0" width="1536" height="832" />
     </state>

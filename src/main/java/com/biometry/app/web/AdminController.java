@@ -27,4 +27,34 @@ public class AdminController {
             return responseBody;
         }
     }
+
+    @PostMapping(value = "/addDept")
+    @ResponseBody
+    public Map<String,String> addDepts(@RequestBody Map<String,String> requestBody) {
+        int d_id = adminService.addDepts(requestBody);
+        Map<String,String> responseBody=new HashMap<>();
+        if(d_id==-1) {
+            responseBody.put("message","Department already exists!");
+            return responseBody;
+        }
+        else {
+            responseBody.put("d_id",Integer.toString(d_id));
+            return responseBody;
+        }
+    }
+
+    @PostMapping(value = "/addSubAdmin")
+    @ResponseBody
+    public Map<String,String> addSubAdmins(@RequestBody Map<String,String> requestBody) {
+        int sa_id = adminService.addDepts(requestBody);
+        Map<String,String> responseBody=new HashMap<>();
+        if(sa_id==-1) {
+            responseBody.put("message","Sub-Admin already exists!");
+            return responseBody;
+        }
+        else {
+            responseBody.put("sa_id",Integer.toString(sa_id));
+            return responseBody;
+        }
+    }
 }

@@ -16,6 +16,8 @@ public class Dept {
     private String deptName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dept")
     private List<StudentMaster> studs;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "dept")
+    private List<SubAdmin> subAdmins;
 
     public Integer getDeptId() {
         return deptId;

@@ -1,14 +1,9 @@
 package com.biometry.app.entity;
 
-import javax.annotation.Generated;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -21,6 +16,8 @@ public class Admin{
     private String adminEmail;
     @Column(nullable=false)
     private String adminPassword;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "admin")
+    private List<SubAdmin> subAdmins;
 
     public Admin() {
     }
