@@ -1126,219 +1126,333 @@
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
     <table id="284" parent="4" name="admin"/>
-    <table id="285" parent="4" name="course"/>
-    <table id="286" parent="4" name="course_master"/>
-    <table id="287" parent="4" name="dept"/>
-    <table id="288" parent="4" name="division"/>
-    <table id="289" parent="4" name="hibernate_sequence"/>
-    <table id="290" parent="4" name="student_master"/>
-    <table id="291" parent="4" name="teacher_master"/>
-    <column id="292" parent="284" name="admin_id">
+    <table id="285" parent="4" name="attendance_master"/>
+    <table id="286" parent="4" name="attendance_master_course_master_list"/>
+    <table id="287" parent="4" name="attendance_master_student_master_list"/>
+    <table id="288" parent="4" name="course"/>
+    <table id="289" parent="4" name="course_master"/>
+    <table id="290" parent="4" name="dept"/>
+    <table id="291" parent="4" name="division"/>
+    <table id="292" parent="4" name="hibernate_sequence"/>
+    <table id="293" parent="4" name="student_master"/>
+    <table id="294" parent="4" name="teacher_master"/>
+    <column id="295" parent="284" name="admin_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="284" name="admin_email">
+    <column id="296" parent="284" name="admin_email">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="284" name="admin_password">
+    <column id="297" parent="284" name="admin_password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="295" parent="284" name="PRIMARY">
+    <key id="298" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>admin_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="296" parent="285" name="course_id">
+    <column id="299" parent="285" name="att_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="297" parent="285" name="year">
+    <column id="300" parent="285" name="date">
+      <Position>2</Position>
+      <DataType>date|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="301" parent="285" name="time">
+      <Position>3</Position>
+      <DataType>time|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="302" parent="285" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>att_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="303" parent="286" name="attendance_master_att_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="304" parent="286" name="course_master_list_cmid">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="305" parent="286" name="attendance_masters_att_id">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="306" parent="286" name="FKfmlcukpy8t7ll0etv9dber2ip">
+      <ColNames>attendance_master_att_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="307" parent="286" name="FK5kw5qm1ptinl1f6u0aby6f857">
+      <ColNames>course_master_list_cmid</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="308" parent="286" name="FKotkpiajtomyags7il3liutcra">
+      <ColNames>attendance_masters_att_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="309" parent="286" name="FKfmlcukpy8t7ll0etv9dber2ip">
+      <ColNames>attendance_master_att_id</ColNames>
+      <RefTableName>attendance_master</RefTableName>
+      <RefColNames>att_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="310" parent="286" name="FK5kw5qm1ptinl1f6u0aby6f857">
+      <ColNames>course_master_list_cmid</ColNames>
+      <RefTableName>course_master</RefTableName>
+      <RefColNames>cmid</RefColNames>
+    </foreign-key>
+    <foreign-key id="311" parent="286" name="FKotkpiajtomyags7il3liutcra">
+      <ColNames>attendance_masters_att_id</ColNames>
+      <RefTableName>attendance_master</RefTableName>
+      <RefColNames>att_id</RefColNames>
+    </foreign-key>
+    <column id="312" parent="287" name="attendance_master_att_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="313" parent="287" name="student_master_list_stud_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="314" parent="287" name="attendance_masters_att_id">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="315" parent="287" name="FKl6tvmybpap7wk19gl8t0y60mk">
+      <ColNames>attendance_master_att_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="316" parent="287" name="FKnmavy10mo2bx7j1l4sko5abam">
+      <ColNames>student_master_list_stud_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="317" parent="287" name="FKlcpac657voxkii3af1djhgjqa">
+      <ColNames>attendance_masters_att_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="318" parent="287" name="FKl6tvmybpap7wk19gl8t0y60mk">
+      <ColNames>attendance_master_att_id</ColNames>
+      <RefTableName>attendance_master</RefTableName>
+      <RefColNames>att_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="319" parent="287" name="FKnmavy10mo2bx7j1l4sko5abam">
+      <ColNames>student_master_list_stud_id</ColNames>
+      <RefTableName>student_master</RefTableName>
+      <RefColNames>stud_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="320" parent="287" name="FKlcpac657voxkii3af1djhgjqa">
+      <ColNames>attendance_masters_att_id</ColNames>
+      <RefTableName>attendance_master</RefTableName>
+      <RefColNames>att_id</RefColNames>
+    </foreign-key>
+    <column id="321" parent="288" name="course_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="322" parent="288" name="year">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="285" name="course_name">
+    <column id="323" parent="288" name="course_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="299" parent="285" name="PRIMARY">
+    <key id="324" parent="288" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>course_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="300" parent="286" name="cmid">
+    <column id="325" parent="289" name="cmid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="286" name="course_course_id">
+    <column id="326" parent="289" name="course_course_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="286" name="teacher_teacherid">
+    <column id="327" parent="289" name="teacher_teacherid">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="303" parent="286" name="FK78q2meptqej87pd3wxrqdv0js">
+    <index id="328" parent="289" name="FK78q2meptqej87pd3wxrqdv0js">
       <ColNames>course_course_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="304" parent="286" name="FK6ncsgjufqjuxkudftmaaqw8es">
+    <index id="329" parent="289" name="FK6ncsgjufqjuxkudftmaaqw8es">
       <ColNames>teacher_teacherid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="305" parent="286" name="PRIMARY">
+    <key id="330" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cmid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="306" parent="286" name="FK78q2meptqej87pd3wxrqdv0js">
+    <foreign-key id="331" parent="289" name="FK78q2meptqej87pd3wxrqdv0js">
       <ColNames>course_course_id</ColNames>
       <RefTableName>course</RefTableName>
       <RefColNames>course_id</RefColNames>
     </foreign-key>
-    <foreign-key id="307" parent="286" name="FK6ncsgjufqjuxkudftmaaqw8es">
+    <foreign-key id="332" parent="289" name="FK6ncsgjufqjuxkudftmaaqw8es">
       <ColNames>teacher_teacherid</ColNames>
       <RefTableName>teacher_master</RefTableName>
       <RefColNames>teacherid</RefColNames>
     </foreign-key>
-    <column id="308" parent="287" name="dept_id">
+    <column id="333" parent="290" name="dept_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="309" parent="287" name="dept_name">
+    <column id="334" parent="290" name="dept_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="310" parent="287" name="PRIMARY">
+    <key id="335" parent="290" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>dept_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="311" parent="288" name="div_id">
+    <column id="336" parent="291" name="div_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="288" name="div_name">
+    <column id="337" parent="291" name="div_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="313" parent="288" name="PRIMARY">
+    <key id="338" parent="291" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>div_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="314" parent="289" name="next_val">
+    <column id="339" parent="292" name="next_val">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="290" name="stud_id">
+    <column id="340" parent="293" name="stud_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="290" name="phone">
+    <column id="341" parent="293" name="phone">
       <Position>2</Position>
       <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="317" parent="290" name="roll">
+    <column id="342" parent="293" name="roll">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="290" name="stud_email">
+    <column id="343" parent="293" name="stud_email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="290" name="stud_name">
+    <column id="344" parent="293" name="stud_name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="320" parent="290" name="stud_pass">
+    <column id="345" parent="293" name="stud_pass">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="321" parent="290" name="dept_dept_id">
+    <column id="346" parent="293" name="dept_dept_id">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="322" parent="290" name="div_div_id">
+    <column id="347" parent="293" name="div_div_id">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="323" parent="290" name="FK2t903q7hspdelssrwinmlq8ed">
+    <index id="348" parent="293" name="FK2t903q7hspdelssrwinmlq8ed">
       <ColNames>dept_dept_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="324" parent="290" name="FK37x43l88xietuo99ksylaqsgq">
+    <index id="349" parent="293" name="FK37x43l88xietuo99ksylaqsgq">
       <ColNames>div_div_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="325" parent="290" name="PRIMARY">
+    <key id="350" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>stud_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="326" parent="290" name="FK2t903q7hspdelssrwinmlq8ed">
+    <foreign-key id="351" parent="293" name="FK2t903q7hspdelssrwinmlq8ed">
       <ColNames>dept_dept_id</ColNames>
       <RefTableName>dept</RefTableName>
       <RefColNames>dept_id</RefColNames>
     </foreign-key>
-    <foreign-key id="327" parent="290" name="FK37x43l88xietuo99ksylaqsgq">
+    <foreign-key id="352" parent="293" name="FK37x43l88xietuo99ksylaqsgq">
       <ColNames>div_div_id</ColNames>
       <RefTableName>division</RefTableName>
       <RefColNames>div_id</RefColNames>
     </foreign-key>
-    <column id="328" parent="291" name="teacherid">
+    <column id="353" parent="294" name="teacherid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="291" name="teacher_email">
+    <column id="354" parent="294" name="teacher_email">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="291" name="teacher_name">
+    <column id="355" parent="294" name="teacher_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="291" name="teacher_pass">
+    <column id="356" parent="294" name="teacher_pass">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="332" parent="291" name="PRIMARY">
+    <key id="357" parent="294" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>teacherid</ColNames>
       <Primary>1</Primary>

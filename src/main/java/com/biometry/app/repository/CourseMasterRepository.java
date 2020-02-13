@@ -1,4 +1,7 @@
 package com.biometry.app.repository;
 
-public class CourseMasterRepository {
+import com.biometry.app.entity.CourseMaster;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CourseMasterRepository extends JpaRepository<CourseMaster,Integer> {
 }

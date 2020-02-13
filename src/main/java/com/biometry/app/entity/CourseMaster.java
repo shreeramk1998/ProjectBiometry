@@ -1,6 +1,7 @@
 package com.biometry.app.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -10,6 +11,16 @@ public class CourseMaster {
     private Integer cmID;
     @ManyToOne(cascade = CascadeType.ALL)
     private Course course;
+    @ManyToMany(mappedBy = "courseMasterList")
+    private List<AttendanceMaster> attendanceMasters;
+
+    public List<AttendanceMaster> getAttendanceMasters() {
+        return attendanceMasters;
+    }
+
+    public void setAttendanceMasters(List<AttendanceMaster> attendanceMasters) {
+        this.attendanceMasters = attendanceMasters;
+    }
 
     public Integer getCmID() {
         return cmID;
