@@ -16,8 +16,6 @@ public class Admin{
     private String adminEmail;
     @Column(nullable=false)
     private String adminPassword;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "admin")
-    private List<SubAdmin> subAdmins;
 
     public Admin() {
     }

@@ -2,19 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e137de6-f55d-4725-ab94-c35d0ec79e4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/SubAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/repository/SubAdminRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/a9268933-97bc-418c-815f-0f7f8752d1ff.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a9268933-97bc-418c-815f-0f7f8752d1ff.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Dept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/entity/Dept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/repository/DeptRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/repository/DeptRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/service/TeacherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/BiometryApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/BiometryApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/ServletInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/ServletInitializer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Course.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/CourseMaster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/CourseMaster.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Dept.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Dept.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Division.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/Division.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/StudentMaster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/StudentMaster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/TeacherMaster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/entity/TeacherMaster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/AdminRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/AdminRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/CourseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/CourseRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/DeptRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/DeptRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/DivRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/repository/DivRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.biometry/biometry/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.biometry/biometry/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/biometry/app/BiometryApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/biometry/app/BiometryApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +152,12 @@
       <workItem from="1581583448068" duration="295000" />
       <workItem from="1581587996184" duration="264000" />
       <workItem from="1581593395453" duration="605000" />
+      <workItem from="1582550506634" duration="133000" />
+      <workItem from="1582551315547" duration="30000" />
+      <workItem from="1583210632256" duration="64000" />
+      <workItem from="1583211168490" duration="365000" />
+      <workItem from="1583212992488" duration="73000" />
+      <workItem from="1583233288073" duration="73000" />
     </task>
     <task id="LOCAL-00001" summary="Change in login controller">
       <created>1581593465098</created>
@@ -154,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581593465098</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Issues with Sub-Admin addition">
+      <created>1581614446254</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581614446254</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +197,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Change in login controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change in login controller" />
+    <MESSAGE value="Issues with Sub-Admin addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Issues with Sub-Admin addition" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -190,58 +210,58 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="543" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832@0.0.1536.832" timestamp="1581579025720" />
-    <state x="359" y="16" key="CommitChangelistDialog2" timestamp="1581614412256">
+    <state x="359" y="16" key="CommitChangelistDialog2" timestamp="1581614443846">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="359" y="16" key="CommitChangelistDialog2/0.0.1536.832@0.0.1536.832" timestamp="1581614412256" />
+    <state x="359" y="16" key="CommitChangelistDialog2/0.0.1536.832@0.0.1536.832" timestamp="1581614443846" />
     <state x="93" y="93" width="1350" height="646" key="DiffContextDialog" timestamp="1581593979757">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="93" y="93" width="1350" height="646" key="DiffContextDialog/0.0.1536.832@0.0.1536.832" timestamp="1581593979757" />
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1581593676368">
+    <state width="746" height="213" key="GridCell.Tab.0.bottom" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1581593676368" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1581593676363">
+    <state width="746" height="213" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
+    <state width="746" height="213" key="GridCell.Tab.0.center" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1581593676363" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1581593676363">
+    <state width="746" height="213" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
+    <state width="746" height="213" key="GridCell.Tab.0.left" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1581593676363" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1581593676363">
+    <state width="746" height="213" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
+    <state width="746" height="213" key="GridCell.Tab.0.right" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1581593676363" />
-    <state width="1493" height="213" key="GridCell.Tab.1.bottom" timestamp="1581593676368">
+    <state width="746" height="213" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
+    <state width="746" height="213" key="GridCell.Tab.1.bottom" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1581593676368" />
-    <state width="1493" height="213" key="GridCell.Tab.1.center" timestamp="1581593676368">
+    <state width="746" height="213" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
+    <state width="746" height="213" key="GridCell.Tab.1.center" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1581593676368" />
-    <state width="1493" height="213" key="GridCell.Tab.1.left" timestamp="1581593676368">
+    <state width="746" height="213" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
+    <state width="746" height="213" key="GridCell.Tab.1.left" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1581593676368" />
-    <state width="1493" height="213" key="GridCell.Tab.1.right" timestamp="1581593676368">
+    <state width="746" height="213" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
+    <state width="746" height="213" key="GridCell.Tab.1.right" timestamp="1581614751232">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1581593676368" />
+    <state width="746" height="213" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1581614751232" />
     <state width="189" height="457" key="HiddenNamespacesPopup" timestamp="1581578187576">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.832@0.0.1536.832" timestamp="1581578187576" />
-    <state x="361" y="142" key="Vcs.Push.Dialog.v2" timestamp="1581593470184">
+    <state x="361" y="142" key="Vcs.Push.Dialog.v2" timestamp="1581614490507">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="361" y="142" key="Vcs.Push.Dialog.v2/0.0.1536.832@0.0.1536.832" timestamp="1581593470184" />
-    <state x="477" y="245" key="com.intellij.ide.util.TipDialog" timestamp="1581593412185">
+    <state x="361" y="142" key="Vcs.Push.Dialog.v2/0.0.1536.832@0.0.1536.832" timestamp="1581614490507" />
+    <state x="477" y="245" key="com.intellij.ide.util.TipDialog" timestamp="1583233288086">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="477" y="245" key="com.intellij.ide.util.TipDialog/0.0.1536.832@0.0.1536.832" timestamp="1581593412185" />
+    <state x="477" y="245" key="com.intellij.ide.util.TipDialog/0.0.1536.832@0.0.1536.832" timestamp="1583233288086" />
     <state x="511" y="133" key="git4idea.branch.GitSmartOperationDialog" timestamp="1581593804182">
       <screen x="0" y="0" width="1536" height="832" />
     </state>

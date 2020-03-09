@@ -46,7 +46,7 @@ public class AdminController {
     @PostMapping(value = "/addSubAdmin")
     @ResponseBody
     public Map<String,String> addSubAdmins(@RequestBody Map<String,String> requestBody) {
-        int sa_id = adminService.addDepts(requestBody);
+        int sa_id = adminService.addSubAdmins(requestBody);
         Map<String,String> responseBody=new HashMap<>();
         if(sa_id==-1) {
             responseBody.put("message","Sub-Admin already exists!");

@@ -69,19 +69,24 @@ public class AdminService {
 
     public int addSubAdmins(Map<String,String> requestBody) {
         String email = requestBody.get("email");
-        String name = requestBody.get("dept");
-        Optional<Admin> admin = adminRepository.findByAdminEmail(email);
+        String name = requestBody.get("name");
+        String password = requestBody.get("password");
         Optional<Dept> dept = deptRepository.findByDeptName(name);
-        if(!admin.isPresent()&&!dept.isPresent()) {
-            SubAdmin subAdmin = new SubAdmin();
-            subAdmin.setAdmin(admin.get());
-            subAdmin.setDept(dept.get());
-            subAdminRepository.save(subAdmin);
-            Optional<SubAdmin> subAdmins = subAdminRepository.findSubAdminByAdmin_AdminEmailAndDept_DeptName(admin,dept);
-            System.out.println(subAdmins.get().getSubadId());
-            return subAdmins.get().getSubadId();
+        Optional<SubAdmin> subadmin = subAdminRepository.findBySubadminEmail(email);
+        if(!subadmin.isPresent()) {
+        	Dept d = new Dept();
+        	//d.setDeptName(dept.get().getDeptName());
+        	d.setDeptId(dept.get().getDeptId());
+        	System.out.print(d.getDeptId());
+        	SubAdmin newsub = new SubAdmin();
+        	newsub.setDept(d);
+        	newsub.setSubadminEmail(email);
+        	newsub.setSubadminPassword(password);
+        	subAdminRepository.save(newsub);
+        	subadmin = subAdminRepository.findBySubadminEmail(email);
+        	return subadmin.get().getSubadId();
         }
         else
-            return -1;
+        	return -1;
     }
 }
