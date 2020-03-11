@@ -20,11 +20,11 @@ public class TeacherMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer teacherID;
-    @Column
+    @Column(nullable=false)
     private String teacherName;
-    @Column
+    @Column(nullable=false)
     private String teacherEmail;
-    @Column
+    @Column(nullable=false)
     private String teacherPass;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "teacher")
     private List<CourseMaster> courseMasters;

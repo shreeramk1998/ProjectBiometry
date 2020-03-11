@@ -1,6 +1,5 @@
 package com.biometry.app.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,19 +10,21 @@ public class StudentMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer studId;
-    @Column
+    @Column(nullable=false)
     private String studName;
-    @Column
+    @Column(nullable=false)
     private String studEmail;
-    @Column
+    @Column(nullable=false)
     private Integer roll;
-    @Column
+    @Column(nullable=false)
     private Long phone;
-    @Column
+    @Column(nullable=false)
     private String studPass;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name="divId")
     private Division div;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name="deptId")
     private Dept dept;
 
     public List<AttendanceMaster> getAttendanceMasters() {
