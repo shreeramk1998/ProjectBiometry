@@ -31,6 +31,21 @@ public class SubAdminController {
         }
     }
 	
+	@PostMapping(value = "/subAdmin/deleteDiv")
+	@ResponseBody
+	public Map<String,String> deleteDivs(@RequestBody Map<String,String> requestBody) {
+		int response = subAdminService.deleteDivs(requestBody);
+    	Map<String,String> responseBody=new HashMap<>();
+    	if(response==-1) {
+            responseBody.put("message","Division does not exist.");
+            return responseBody;
+        }
+        else {
+        	responseBody.put("message","Division deleted.");
+            return responseBody;
+        }
+	}
+	
 	@PostMapping(value = "/subAdmin/addTeacher")
     @ResponseBody
     public Map<String,String> addTeachers(@RequestBody Map<String,String> requestBody) {
@@ -45,4 +60,19 @@ public class SubAdminController {
             return responseBody;
         }
     }
+	
+	@PostMapping(value = "/subAdmin/deleteDiv")
+	@ResponseBody
+	public Map<String,String> deleteTeachers(@RequestBody Map<String,String> requestBody) {
+		int response = subAdminService.deleteDivs(requestBody);
+    	Map<String,String> responseBody=new HashMap<>();
+    	if(response==-1) {
+            responseBody.put("message","User does not exist.");
+            return responseBody;
+        }
+        else {
+        	responseBody.put("message","User deleted.");
+            return responseBody;
+        }
+	}
 }

@@ -27,6 +27,21 @@ public class AdminController {
             return responseBody;
         }
     }
+    
+    @PostMapping(value = "/deleteAdmin")
+    @ResponseBody
+    public Map<String,String> deleteAdmins(@RequestBody Map<String,String> requestBody) {
+    	int response = adminService.deleteAdmins(requestBody);
+    	Map<String,String> responseBody=new HashMap<>();
+    	if(response==-1) {
+            responseBody.put("message","User does not exist.");
+            return responseBody;
+        }
+        else {
+        	responseBody.put("message","User deleted.");
+            return responseBody;
+        }
+    }
 
     @PostMapping(value = "/addDept")
     @ResponseBody
@@ -42,6 +57,21 @@ public class AdminController {
             return responseBody;
         }
     }
+    
+    @PostMapping(value = "/deleteDept")
+    @ResponseBody
+    public Map<String,String> deleteDepts(@RequestBody Map<String,String> requestBody) {
+    	int response = adminService.deleteDepts(requestBody);
+    	Map<String,String> responseBody=new HashMap<>();
+    	if(response==-1) {
+            responseBody.put("message","Department does not exist.");
+            return responseBody;
+        }
+        else {
+        	responseBody.put("message","Department deleted.");
+            return responseBody;
+        }
+    }
 
     @PostMapping(value = "/addSubAdmin")
     @ResponseBody
@@ -54,6 +84,21 @@ public class AdminController {
         }
         else {
             responseBody.put("sa_id",Integer.toString(sa_id));
+            return responseBody;
+        }
+    }
+    
+    @PostMapping(value = "/deleteSubAdmin")
+    @ResponseBody
+    public Map<String,String> deleteSubAdmins(@RequestBody Map<String,String> requestBody) {
+    	int response = adminService.deleteSubAdmin(requestBody);
+    	Map<String,String> responseBody=new HashMap<>();
+    	if(response==-1) {
+            responseBody.put("message","User does not exist.");
+            return responseBody;
+        }
+        else {
+        	responseBody.put("message","User deleted.");
             return responseBody;
         }
     }

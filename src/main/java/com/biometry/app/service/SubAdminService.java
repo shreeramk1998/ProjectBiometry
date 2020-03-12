@@ -50,6 +50,17 @@ public class SubAdminService {
         }
     }
 	
+	public int deleteDivs(Map<String,String> requestBody) {
+		String name = requestBody.get("name");
+		Optional<Division> div = divRepository.findByDivName(name);
+		if(div.isPresent()) {
+			divRepository.deleteById(div.get().getDivId());
+			return 1;
+		}
+		else
+			return -1;
+	}
+	
 	public int addTeachers(Map<String,String> requestBody) {
 		String name = requestBody.get("name");
 		String email = requestBody.get("email");
@@ -68,8 +79,14 @@ public class SubAdminService {
 			return -1;
 	}
 	
-	/*
-	public int addCourses(Map<String,String> requestBody) {
-		
-	}*/
+	public int deleteTeachers(Map<String,String> requestBody) {
+		String name = requestBody.get("name");
+		Optional<TeacherMaster> teacher = teacherMasterRepository.findByTeacherName(name);
+		if(teacher.isPresent()) {
+			teacherMasterRepository.deleteById(teacher.get().getTeacherID());
+			return 1;
+		}
+		else
+			return -1;
+	}
 }

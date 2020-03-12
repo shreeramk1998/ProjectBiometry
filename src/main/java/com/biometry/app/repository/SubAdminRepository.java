@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface SubAdminRepository extends JpaRepository<SubAdmin,Integer> {
 	Optional<SubAdmin> findBySubadminEmail(String subadminEmail);
 	Optional<SubAdmin> findBySubadminEmailAndSubadminPassword(String subadminEmail,String subadminPassword);
+	Optional<SubAdmin> deleteBySubadminEmail(String subadminEmail);
 }

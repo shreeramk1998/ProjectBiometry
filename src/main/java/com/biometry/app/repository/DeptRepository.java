@@ -7,4 +7,9 @@ import java.util.Optional;
 
 public interface DeptRepository extends JpaRepository<Dept,Integer> {
     Optional<Dept> findByDeptName(String name);
+    @Override
+    default void deleteById(Integer id) {
+    	// TODO Auto-generated method stub
+    	
+    }
 }

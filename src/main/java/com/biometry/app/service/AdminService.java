@@ -51,6 +51,18 @@ public class AdminService {
             return -1;
         }
     }
+    
+    public int deleteAdmins(Map<String,String> requestBody) {
+        String email = requestBody.get("email");
+        Optional<Admin> admin=adminRepository.findByAdminEmail(email);
+        if(admin.isPresent()) {
+        	adminRepository.deleteById(admin.get().getAdminId());
+        	return 1;
+        }
+        else {
+            return -1;
+        }
+    }
 
     public int addDepts(Map<String,String> requestBody) {
         String name = requestBody.get("name");
@@ -66,6 +78,17 @@ public class AdminService {
             return -1;
         }
     }
+    
+    public int deleteDepts(Map<String,String> requestBody) {
+    	String name = requestBody.get("name");
+        Optional<Dept> dept=deptRepository.findByDeptName(name);
+        if(dept.isPresent()) {
+        	deptRepository.deleteById(dept.get().getDeptId());
+        	return 1;
+        }
+        else
+        	return -1;
+    }
 
     public int addSubAdmins(Map<String,String> requestBody) {
         String email = requestBody.get("email");
@@ -75,7 +98,6 @@ public class AdminService {
         Optional<SubAdmin> subadmin = subAdminRepository.findBySubadminEmail(email);
         if(!subadmin.isPresent()) {
         	Dept d = new Dept();
-        	//d.setDeptName(dept.get().getDeptName());
         	d.setDeptId(dept.get().getDeptId());
         	System.out.print(d.getDeptId());
         	SubAdmin newsub = new SubAdmin();
@@ -88,5 +110,16 @@ public class AdminService {
         }
         else
         	return -1;
+    }
+    
+    public int deleteSubAdmin(Map<String,String> requestBody) {
+    	String email = requestBody.get("email");
+    	Optional<SubAdmin> subadmin = subAdminRepository.findBySubadminEmail(email);
+    	if(subadmin.isPresent()) {
+    		subAdminRepository.deleteById(subadmin.get().getSubadId());
+    		return 1;
+    	}
+    	else
+    		return -1;
     }
 }
