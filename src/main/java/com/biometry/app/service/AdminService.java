@@ -99,7 +99,6 @@ public class AdminService {
         if(!subadmin.isPresent()) {
         	Dept d = new Dept();
         	d.setDeptId(dept.get().getDeptId());
-        	System.out.print(d.getDeptId());
         	SubAdmin newsub = new SubAdmin();
         	newsub.setDept(d);
         	newsub.setSubadminEmail(email);

@@ -5,9 +5,14 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.biometry.app.entity.Course;
+import com.biometry.app.entity.CourseMaster;
 import com.biometry.app.entity.Division;
 import com.biometry.app.entity.SubAdmin;
 import com.biometry.app.entity.TeacherMaster;
+import com.biometry.app.repository.CourseMasterRepository;
+import com.biometry.app.repository.CourseRepository;
 import com.biometry.app.repository.DivRepository;
 import com.biometry.app.repository.SubAdminRepository;
 import com.biometry.app.repository.TeacherMasterRepository;
@@ -22,6 +27,12 @@ public class SubAdminService {
 	
 	@Autowired
 	private TeacherMasterRepository teacherMasterRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	@Autowired
+	private CourseMasterRepository courseMasterRepository;
 	
 	public int checkLogin(Map<String,String> requestBody) {
         String email = requestBody.get("email");
@@ -84,6 +95,72 @@ public class SubAdminService {
 		Optional<TeacherMaster> teacher = teacherMasterRepository.findByTeacherName(name);
 		if(teacher.isPresent()) {
 			teacherMasterRepository.deleteById(teacher.get().getTeacherID());
+			return 1;
+		}
+		else
+			return -1;
+	}
+	
+	public int addCourses(Map<String,String> requestBody) {
+		String name = requestBody.get("name");
+		String year = requestBody.get("year");
+		Optional<Course> course = courseRepository.findByCourseName(name);
+		if(!course.isPresent()) {
+			Course newCourse = new Course();
+			newCourse.setCourseName(name);
+			newCourse.setYear(year);
+			courseRepository.save(newCourse);
+			course = courseRepository.findByCourseName(name);
+			return course.get().getCourseId();
+		}
+		else 
+			return -1;
+	}
+	
+	public int deleteCourses(Map<String,String> requestBody) {
+		String name = requestBody.get("name");
+		Optional<Course> course = courseRepository.findByCourseName(name);
+		if(course.isPresent()) {
+			courseRepository.deleteById(course.get().getCourseId());
+			return 1;
+		}
+		else 
+			return -1;
+	}
+	
+	public int assignCourses(Map<String,String> requestBody) {
+		String addcourse = requestBody.get("course");
+		String addteacher = requestBody.get("teacher");
+		Optional<Course> course = courseRepository.findByCourseName(addcourse);
+		Optional<TeacherMaster> teacher = teacherMasterRepository.findByTeacherName(addteacher);
+		if(course.isPresent()&&teacher.isPresent()) {
+			Course c = new Course();
+			TeacherMaster t = new TeacherMaster();
+			c.setCourseId(course.get().getCourseId());
+			t.setTeacherID(teacher.get().getTeacherID());
+			CourseMaster newCourseMaster = new CourseMaster();
+			newCourseMaster.setCourse(c);
+			newCourseMaster.setTeacher(t);
+			courseMasterRepository.save(newCourseMaster);
+			Optional<CourseMaster> courseMaster = courseMasterRepository.findByCourseAndTeacher(c, t);
+			return courseMaster.get().getCmID();
+		}
+		else
+			return -1;
+	}
+	
+	public int removeCourseMap(Map<String,String> requestBody) {
+		String remcourse = requestBody.get("course");
+		String remteacher = requestBody.get("teacher");
+		Optional<Course> course = courseRepository.findByCourseName(remcourse);
+		Optional<TeacherMaster> teacher = teacherMasterRepository.findByTeacherName(remteacher);
+		if(course.isPresent()&&teacher.isPresent()) {
+			Course c = new Course();
+			TeacherMaster t = new TeacherMaster();
+			c.setCourseId(course.get().getCourseId());
+			t.setTeacherID(teacher.get().getTeacherID());
+			Optional<CourseMaster> courseMaster = courseMasterRepository.findByCourseAndTeacher(c, t);
+			courseMasterRepository.deleteById(courseMaster.get().getCmID());
 			return 1;
 		}
 		else

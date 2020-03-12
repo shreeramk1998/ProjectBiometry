@@ -9,7 +9,8 @@ public class CourseMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer cmID;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "courseId")
     private Course course;
     @ManyToMany(mappedBy = "courseMasterList")
     private List<AttendanceMaster> attendanceMasters;
@@ -58,6 +59,7 @@ public class CourseMaster {
         this.teacher = teacher;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "teacherId")
     private TeacherMaster teacher;
 }
