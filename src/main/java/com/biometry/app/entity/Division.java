@@ -9,7 +9,7 @@ public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer divId;
-    @Column
+    @Column(nullable=false)
     private String divName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "div")
     private List<StudentMaster> studs;

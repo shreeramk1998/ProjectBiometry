@@ -1,19 +1,23 @@
 package com.biometry.app.web;
 
 import com.biometry.app.service.AdminService;
+import com.biometry.app.service.SubAdminService;
+import com.biometry.app.service.TeacherService;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController(value = "/login")
+@RestController("/login")
 public class LoginController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private SubAdminService subAdminService;
+    @Autowired
+    private TeacherService teacherService;
 
     @PostMapping(value = "/login")
     @ResponseBody
@@ -22,6 +26,26 @@ public class LoginController {
         int role = Integer.parseInt(requestBody.get("role"));
         if(role==0) {
             int id = adminService.checkLogin(requestBody);
+            if (id == -1) {
+                responseBody.put("message", "User does not exist!");
+                return responseBody;
+            } else {
+                responseBody.put("id", Integer.toString(id));
+                return responseBody;
+            }
+        }
+        else if(role==1) {
+        	int id = subAdminService.checkLogin(requestBody);
+            if (id == -1) {
+                responseBody.put("message", "User does not exist!");
+                return responseBody;
+            } else {
+                responseBody.put("id", Integer.toString(id));
+                return responseBody;
+            }
+        }
+        else if(role == 2) {
+        	int id = teacherService.checkLogin(requestBody);
             if (id == -1) {
                 responseBody.put("message", "User does not exist!");
                 return responseBody;
