@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<!-- jQuery library -->
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<body>
+
+
+  <div id="mySidenav" class="sidenav nav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Handle Classroom</a>
+    <a href="C:\Users\Admin\Desktop\Project\markAttendance.html"><i class="fa fa-table"></i> Manage Attendance</a>
+
+    <a href="C:\Users\Admin\Desktop\Project\substitute.html"><i class="fas fa-exchange-alt"></i> Substitute</a>
+    <a href="C:\Users\Admin\Desktop\Project\manageMe.html"><i class="fa fa-user"></i> Manage Me</a>
+    <a href="C:\Users\Admin\Desktop\Projec\"><i class="fas fa-sign-out-alt"></i> logout</a>
+  </div>
+
+  <header>
+
+    <span class="nav-item" style="float: left;font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
+    <nav  class="navbar navbar-default navbar-fixed-top" >
+
+      <a class="navbar-brand" href="#">Brand</a>
+
+      <ul class="nav ml-auto justify-content-end">
+
+        <li class="nav-item">
+          <a class="nav-link disabled" style="color:black; font-family:Courier" href="#">Shreeram</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container p-3 "  >
+    <h1>Class Session <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a> </h1>
+    <hr>
+    <div class="row ">
+      <div class="col text-center" >
+
+		
+       <select class="form-control" id="classSel" >
+           <option>Select Classroom</option>
+           <option th:each="class :${classroomMap}" th:value="${class.value}"  th:text="${class.key}"></option>
+       </select>
+       
+      </div>
+
+
+      <div class="col text-center" >
+
+               <select class="form-control" id="couseSel">
+                   <option >Select Course</option>
+               </select>
+      </div>
+
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col text-center" >
+        <button type="button" class="btn btn-light">Start Session</button>
+      </div>
+      <div class="col text-center" >
+        <button type="button" class="btn btn-light">End Session</button>
+      </div>
+      <div class="col text-center"  >
+        <button type="button" class="btn btn-light">
+          Restart session</button>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="container p-3 " style="border:1px solid">
+      <div class="embed-responsive embed-responsive-21by9">
+      
+        <iframe class="embed-responsive-item" src="/welcome.html"></iframe>
+      
+      </div>
+    </div>
+
+    <div class="container p-3 ">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fas fa-search"></i></div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search">
+      </div>
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+        <table class="table table-bordered table-striped mb-0">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>ram</td>
+              <td>kulkarni</td>
+              <td>2:35am</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>ram</td>
+              <td>kulkarni</td>
+              <td>2:35am</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>ram</td>
+              <td>kulkarni</td>
+              <td>2:35am</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>ram</td>
+              <td>kulkarni</td>
+              <td>2:35am</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>ram</td>
+              <td>kulkarni</td>
+              <td>2:35am</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <script>
+
+    $(document).on('click', '#click', function () {
+
+      alert("defvs");
+
+
+    });
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "180px ";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+<script src="/assets/js/handle-classroom.js"></script>
+  </body>
+  </html>
