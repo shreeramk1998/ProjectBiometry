@@ -1,0 +1,98 @@
+ 
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    
+</head>
+
+<body class="bg-gradient-primary">
+	
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10" style="height: 560px;margin: 81px;">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;assets/img/login.jpg&quot;);background-size: cover;margin: 0px;"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <h4 class="text-dark mb-4">Welcome Back!</h4>
+                                    <div class="table-responsive">
+                                    <form class="user" onsubmit="return false;"  method="post">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2" name="radiob" value="teacher" checked><label class="form-check-label" for="formCheck-2">Teacher</label></div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3" name="radiob" value="student" ><label class="form-check-label" for="formCheck-3">Student</label></div>
+                                                    </th>
+                                                                                                    </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr></tr>
+                                                <tr></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-center"></div>
+                                    
+                                        <div class="form-group"><input class="form-control form-control-user" type="tel" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="UserID" name="userID"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <div class="form-check"></div>
+                                            </div>
+                                        </div><button class="btn btn-primary btn-block text-white btn-user" type="submit" id="login">Login</button>
+                                        <hr>
+                                    </form>
+                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
+                                    <div class="text-center"><a class="small" href="forgot-password.html">Sign Up</a></div>
+                                    <div class="text-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--   <script src="<c:url value="assets/js/jquery.min.js"/>"></script>
+    <script src="<c:url value="assets/bootstrap/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value="assets/js/chart.min.js"/>"></script>
+    <script src="<c:url value="assets/js/bs-charts.js"/>"></script>
+	<script src="<c:url value="assets/js/theme.js"/>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="<c:url value="assets/js/search.js"/>"></script> -->
+    <script type="text/javascript"> 
+    	$(function(){
+    		$("#login").click(function(){
+    			var loginJson = {};
+    			$.ajax({
+    				
+    			});
+    			
+    		});
+    	});
+    </script>
+ </body>
+
+</html>

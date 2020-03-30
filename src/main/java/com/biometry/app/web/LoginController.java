@@ -5,12 +5,15 @@ import com.biometry.app.service.SubAdminService;
 import com.biometry.app.service.TeacherService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController("/login")
+@Controller
+@RequestMapping({"/","/login"})
+
 public class LoginController {
     @Autowired
     private AdminService adminService;
@@ -19,7 +22,13 @@ public class LoginController {
     @Autowired
     private TeacherService teacherService;
 
-    @PostMapping(value = "/login")
+    
+    @GetMapping("")
+    public String showLogin() {
+    	return "login";
+    }
+    
+    @PostMapping(value = "")
     @ResponseBody
     public Map<String,String> login(@RequestBody Map<String,String> requestBody) {
         Map<String,String> responseBody=new HashMap<>();

@@ -27,17 +27,7 @@ public class StudentMaster {
     @JoinColumn(name="deptId")
     private Dept dept;
 
-    public List<AttendanceMaster> getAttendanceMasters() {
-        return attendanceMasters;
-    }
-
-    public void setAttendanceMasters(List<AttendanceMaster> attendanceMasters) {
-        this.attendanceMasters = attendanceMasters;
-    }
-
-    @ManyToMany(mappedBy = "studentMasterList")
-    private List<AttendanceMaster> attendanceMasters;
-
+    
     public Division getDiv() {
         return div;
     }

@@ -1,7 +1,8 @@
 var ws ;
 $("#classSel").change(function(){
 	$('iframe').attr('src',"http://"+$(this).val());
-	ws.send("browser");
+	arduinoMessage = {id:-1,className:$("#classSel option:selected").html(),arduinoMessage:false,newConnection:true};
+	ws.send(JSON.stringify(arduinoMessage));
 });
 
 $(function(){

@@ -11,14 +11,15 @@ public class AttendanceMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer attId;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<StudentMaster> studentMasterList;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<CourseMaster> courseMasterList;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="smid")
+    private StudentMaster studentMaster;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cmid")
+    private CourseMaster courseMaster;
     @Column
     private Date date;
-    @Column
-    private Time time;
+    
 
     public AttendanceMaster() {
     }
@@ -31,21 +32,7 @@ public class AttendanceMaster {
         this.attId = attId;
     }
 
-    public List<StudentMaster> getStudentMasterList() {
-        return studentMasterList;
-    }
-
-    public void setStudentMasterList(List<StudentMaster> studentMasterList) {
-        this.studentMasterList = studentMasterList;
-    }
-
-    public List<CourseMaster> getCourseMasterList() {
-        return courseMasterList;
-    }
-
-    public void setCourseMasterList(List<CourseMaster> courseMasterList) {
-        this.courseMasterList = courseMasterList;
-    }
+   
 
     public Date getDate() {
         return date;
@@ -55,22 +42,36 @@ public class AttendanceMaster {
         this.date = date;
     }
 
-    public Time getTime() {
-        return time;
-    }
+	@Override
+	public String toString() {
+		return "AttendanceMaster [attId=" + attId + ", studentMaster=" + studentMaster + ", courseMaster="
+				+ courseMaster + ", date=" + date + "]";
+	}
 
-    public void setTime(Time time) {
-        this.time = time;
-    }
+	public AttendanceMaster(Integer attId, StudentMaster studentMaster, CourseMaster courseMaster, Date date) {
+		super();
+		this.attId = attId;
+		this.studentMaster = studentMaster;
+		this.courseMaster = courseMaster;
+		this.date = date;
+	}
 
-    @Override
-    public String toString() {
-        return "AttendanceMaster{" +
-                "attId=" + attId +
-                ", studentMasterList=" + studentMasterList +
-                ", courseMasterList=" + courseMasterList +
-                ", date=" + date +
-                ", time=" + time +
-                '}';
-    }
+	public StudentMaster getStudentMaster() {
+		return studentMaster;
+	}
+
+	public void setStudentMaster(StudentMaster studentMaster) {
+		this.studentMaster = studentMaster;
+	}
+
+	public CourseMaster getCourseMaster() {
+		return courseMaster;
+	}
+
+	public void setCourseMaster(CourseMaster courseMaster) {
+		this.courseMaster = courseMaster;
+	}
+
+
+   
 }

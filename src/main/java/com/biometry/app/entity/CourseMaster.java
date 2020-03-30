@@ -12,16 +12,11 @@ public class CourseMaster {
     @ManyToOne
     @JoinColumn(name = "courseId")
     private Course course;
-    @ManyToMany(mappedBy = "courseMasterList")
-    private List<AttendanceMaster> attendanceMasters;
-
-    public List<AttendanceMaster> getAttendanceMasters() {
-        return attendanceMasters;
-    }
-
-    public void setAttendanceMasters(List<AttendanceMaster> attendanceMasters) {
-        this.attendanceMasters = attendanceMasters;
-    }
+   
+    @ManyToOne
+    @JoinColumn(name = "teacherId")
+    private TeacherMaster teacher;
+   
 
     public Integer getCmID() {
         return cmID;
@@ -59,7 +54,4 @@ public class CourseMaster {
         this.teacher = teacher;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "teacherId")
-    private TeacherMaster teacher;
 }
