@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -33,9 +35,8 @@ public class LoginController {
     
     @RequestMapping(value="" , method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,String> login(@RequestBody Map<String,String> requestBody) {
-//    	Map<String,String> requestBody = body.get(0);
-    	System.out.println( requestBody.keySet());
+    public Map<String,String> login(@RequestBody Map<String,String> requestBody,Model model) {
+    	System.out.println( requestBody.keySet() );
         Map<String,String> responseBody=new HashMap<>();
         int role = Integer.parseInt( requestBody.get("role"));
         /*
@@ -47,37 +48,39 @@ public class LoginController {
         if(role==0) {
             int id = adminService.checkLogin(requestBody);
             if (id == -1) {
-                responseBody.put("message", "User does not exist!");
-                return responseBody;
+            	
+          responseBody.put("message", "invalid credentials!");
+          
+            
             } else {
-                responseBody.put("id", Integer.toString(id));
-                return responseBody;
+            	responseBody.put("url","/admin");
             }
         }
         else if(role==1) {
         	int id = subAdminService.checkLogin(requestBody);
             if (id == -1) {
-                responseBody.put("message", "User does not exist!");
-                return responseBody;
+                responseBody.put("message", "invalid credentials!!");
+                
             } else {
-                responseBody.put("id", Integer.toString(id));
-                return responseBody;
+            	responseBody.put("url","/subAdmin");
             }
         }
         else if(role == 2) {
         	int id = teacherService.checkLogin(requestBody);
             if (id == -1) {
-                responseBody.put("message", "User does not exist!");
-                return responseBody;
+                responseBody.put("message", "invalid credentials!");
+
             } else {
-                responseBody.put("id", Integer.toString(id));
-                return responseBody;
+            	responseBody.put("url","/teacher");
+
             }
         }
         else if(role == 3) {
-        	return null;
+        	//student check to be added 
         }
-        else
-            return null;
+        else {
+        	responseBody.put("message", "invalid submission please retry!");
+        }
+        return responseBody;
     }
 }
