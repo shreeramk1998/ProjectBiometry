@@ -34,12 +34,22 @@
                                             <thead>
                                                 <tr>
                                                     <th>
-                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2" name="radiob" value="teacher" checked><label class="form-check-label" for="formCheck-2">Teacher</label></div>
+                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1" name="radiob" value="0" checked><label class="form-check-label" >Admin</label></div>
                                                     </th>
                                                     <th>
-                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3" name="radiob" value="student" ><label class="form-check-label" for="formCheck-3">Student</label></div>
+                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2" name="radiob" value="1" ><label class="form-check-label" >Sub Admin</label></div>
+                                                    </th> 
+                                                </tr>
+												<tr>			
+                                                    <th>
+                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3" name="radiob" value="2" checked><label class="form-check-label" >Teacher</label></div>
                                                     </th>
-                                                                                                    </tr>
+                                                    <th>
+                                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4" name="radiob" value="3" ><label class="form-check-label" >Student</label></div>
+                                                    </th>
+                                                    
+                                                    
+                                             	</tr>
                                             </thead>
                                             <tbody>
                                                 <tr></tr>
@@ -49,8 +59,8 @@
                                     </div>
                                     <div class="text-center"></div>
                                     
-                                        <div class="form-group"><input class="form-control form-control-user" type="tel" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="UserID" name="userID"></div>
-                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="tel" id="inputEmail" aria-describedby="emailHelp" placeholder="email" ></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="inputPassword" placeholder="Password" name="password"></div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <div class="form-check"></div>
@@ -85,9 +95,22 @@
     <script type="text/javascript"> 
     	$(function(){
     		$("#login").click(function(){
-    			var loginJson = {};
+    			var loginJson = {role:$('[name=radiob]:checked').val(),
+    			 email:$('#inputEmail').val(),
+    			 password:$('#inputPassword').val()};
+    			console.log(JSON.stringify(loginJson));
+    			jsonString = JSON.stringify(loginJson);
     			$.ajax({
-    				
+    				type : "post",
+    				url : "/login",
+    				data : jsonString,
+    				async: false,    //Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation
+    				cache: false,    //This will force requested pages not to be cached by the browser          
+    				processData:false, //To avoid making query String instead of JSON
+    				contentType: 'application/json; charset=utf-8',
+    				success : function(response){
+    					console.log("Response:"+JSON.stringify(response));
+    				}
     			});
     			
     		});
