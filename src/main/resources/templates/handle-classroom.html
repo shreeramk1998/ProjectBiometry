@@ -29,7 +29,9 @@
 
     <a href="C:\Users\Admin\Desktop\Project\substitute.html"><i class="fas fa-exchange-alt"></i> Substitute</a>
     <a href="C:\Users\Admin\Desktop\Project\manageMe.html"><i class="fa fa-user"></i> Manage Me</a>
-    <a href="C:\Users\Admin\Desktop\Projec\"><i class="fas fa-sign-out-alt"></i> logout</a>
+	<a th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i> logout</a>
+        
+    
   </div>
 
   <header>
@@ -37,7 +39,7 @@
     <span class="nav-item" style="float: left;font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
     <nav  class="navbar navbar-default navbar-fixed-top" >
 
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Project Biometry</a>
 
       <ul class="nav ml-auto justify-content-end">
 
@@ -49,6 +51,7 @@
   </header>
 
   <div class="container p-3 "  >
+  <p1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
     <h1>Class Session <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a> </h1>
     <hr>
     <div class="row ">
@@ -67,6 +70,7 @@
 
                <select class="form-control" id="couseSel">
                    <option >Select Course</option>
+                   <option >Maths</option>
                </select>
       </div>
 
@@ -112,40 +116,17 @@
               <th scope="col">#</th>
               <th scope="col">First</th>
               <th scope="col">Last</th>
-              <th scope="col">time</th>
+              <th scope="col">Date/time</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+           <!--  <tr>
               <th scope="row">1</th>
               <td>ram</td>
               <td>kulkarni</td>
-              <td>2:35am</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>ram</td>
-              <td>kulkarni</td>
-              <td>2:35am</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>ram</td>
-              <td>kulkarni</td>
-              <td>2:35am</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>ram</td>
-              <td>kulkarni</td>
-              <td>2:35am</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>ram</td>
-              <td>kulkarni</td>
-              <td>2:35am</td>
-            </tr>
+              <td>05/03/2020 12:32 </td>
+            </tr> -->
+            
 
           </tbody>
         </table>

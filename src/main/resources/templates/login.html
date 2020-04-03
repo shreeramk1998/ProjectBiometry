@@ -35,56 +35,13 @@
 							<div class="col-lg-6">
 								<div class="p-5">
 									<h4 class="text-dark mb-4">Welcome Back!</h4>
-									<div class="table-responsive">
-										<form class="user" onsubmit="return false;" method="post">
-											<table class="table">
-												<thead>
-													<tr>
-														<th>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	id="formCheck-1" name="radiob" value="0" checked><label
-																	class="form-check-label">Admin</label>
-															</div>
-														</th>
-														<th>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	id="formCheck-2" name="radiob" value="1"><label
-																	class="form-check-label">Sub Admin</label>
-															</div>
-														</th>
-													</tr>
-													<tr>
-														<th>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	id="formCheck-3" name="radiob" value="2" checked><label
-																	class="form-check-label">Teacher</label>
-															</div>
-														</th>
-														<th>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	id="formCheck-4" name="radiob" value="3"><label
-																	class="form-check-label">Student</label>
-															</div>
-														</th>
-
-
-													</tr>
-												</thead>
-												<tbody>
-													<tr></tr>
-													<tr></tr>
-												</tbody>
-											</table>
-									</div>
+										<form class="user" th:action="@{/login}" method="post">
+									
 									<div class="text-center"></div>
 
 									<div class="form-group">
 										<input class="form-control form-control-user" type="tel"
-											id="inputEmail" aria-describedby="emailHelp"
+											id="inputEmail" name="username" aria-describedby="emailHelp"
 											placeholder="email">
 									</div>
 									<div class="form-group">
@@ -95,6 +52,9 @@
 										<div class="custom-control custom-checkbox small">
 											<div class="form-check"></div>
 										</div>
+										<div th:if="${param.error}">Invalid username and
+											password.</div>
+										<div th:if="${param.logout}">You have been logged out.</div>
 									</div>
 									<button class="btn btn-primary btn-block text-white btn-user"
 										type="submit" id="login">Login</button>
@@ -163,7 +123,7 @@
     <script src="<c:url value="assets/js/search.js"/>"></script> -->
 	<script th:inline="javascript"> 
     	$(function(){
-    		$("#login").click(function(){
+    		/* $("#login").click(function(){
     			var loginJson = {role:$('[name=radiob]:checked').val(),
     			 email:$('#inputEmail').val(),
     			 password:$('#inputPassword').val()};
@@ -178,20 +138,20 @@
     				processData:false, //To avoid making query String instead of JSON
     				contentType: 'application/json; charset=utf-8',
     				success : function(response){
-    					
-    					console.log("Response:"+JSON.stringify(response));
+    					console.log("Response:"+response);
+    					/* console.log("Response:"+JSON.stringify(response));
     					if(response.hasOwnProperty('message')) {
     						$("#modalBody").text(response['message']);
     						$("#errorModal").modal("show");
     					}else{
     						
     						 window.location.href = response.url;
-    					}
-    				}
-    			});
+    					} */
+    				//}
+    		//	});
     			
-    		});
-    	});
+    		//});  */
+ 	});
     </script>
 </body>
 

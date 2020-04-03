@@ -20,15 +20,22 @@ public class TeacherMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer teacherID;
+    
     @Column(nullable=false)
     private String teacherName;
+    
     @Column(nullable=false)
     private String teacherEmail;
+    
     @Column(nullable=false)
     private String teacherPass;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "teacher")
     private List<CourseMaster> courseMasters;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    User user;
     public Integer getTeacherID() {
         return teacherID;
     }
