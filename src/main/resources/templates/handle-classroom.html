@@ -44,7 +44,7 @@
       <ul class="nav ml-auto justify-content-end">
 
         <li class="nav-item">
-          <a class="nav-link disabled" style="color:black; font-family:Courier" href="#">Shreeram</a>
+          <a class="nav-link disabled" style="color:black; font-family:Courier" href="#" th:text="${session.userSession.teacherName}"></a>
         </li>
       </ul>
     </nav>
@@ -114,8 +114,8 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
+              <th scope="col">Name of the student</th>
+              
               <th scope="col">Date/time</th>
             </tr>
           </thead>

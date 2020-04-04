@@ -11,40 +11,38 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int adminId;
-    @Column(nullable=false)
-    private String adminEmail;
-    @Column(nullable=false)
-    private String adminPassword;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    User user;
     public Admin() {
     }
-    public Admin(int adminId, String adminPassword, String adminEmail) {
-        super();
-        this.adminId = adminId;
-        this.adminPassword = adminPassword;
-        this.adminEmail = adminEmail;
-    }
+
+    public Admin(int adminId, User user) {
+		super();
+		this.adminId = adminId;
+		this.user = user;
+	}
 
     @Override
-    public String toString() {
-        return "Admin [adminId=" + adminId + ", adminPassword=" + adminPassword + ", adminEmail=" + adminEmail + "]";
-    }
+	public String toString() {
+		return "Admin [adminId=" + adminId + ", user=" + user + "]";
+	}
     public int getAdminId() {
         return adminId;
     }
-    public void setAdminId(int adminId) {
+
+
+	public void setAdminId(int adminId) {
         this.adminId = adminId;
     }
-    public String getAdminPassword() {
-        return adminPassword;
-    }
-    public void setAdminPassword(String adminPassword) {
-        this.adminPassword = adminPassword;
-    }
-    public String getAdminEmail() {
-        return adminEmail;
-    }
-    public void setAdminEmail(String adminEmail) {
-        this.adminEmail = adminEmail;
-    }
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+   
 }

@@ -1,5 +1,7 @@
 package com.biometry.app.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -7,17 +9,20 @@ import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 
+import com.biometry.app.entity.StudentMaster;
 import com.biometry.app.entity.WebsocketMessage;
+import com.biometry.app.service.StudentMasterService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+@Component
 public class WebSocketHandler extends AbstractWebSocketHandler {
 	Map<String, WebSocketSession> browserMap = new HashMap();
 	Map<String,WebSocketSession> arduinoMap = new HashMap(); 
-
+	@Autowired
+	StudentMasterService studentMasterService;
 
 
 	@Override
@@ -32,8 +37,14 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 				String className = wm.getClassName();
 				System.out.println("****************\n browse MAP : "+browserMap+"\n***********");
 				if(browserMap.containsKey(className)) {
-					System.out.println("message :" +wm+" about to be sent\n");
-					browserMap.get(className).sendMessage(new TextMessage(wm.toString()));
+					StudentMaster studentMaster = studentMasterService.getByRollAndDIv(wm.getId(), wm.getClassName());
+					System.out.println("Message :" +wm+" about to be sent \n");
+					if(studentMaster!=null) {
+						String studentJSON = new ObjectMapper().writeValueAsString(studentMaster);
+						browserMap.get(className).sendMessage(new TextMessage(studentJSON));
+					}else {
+						System.out.println("Student not found");
+					}
 				}
 			}
 			

@@ -31,18 +31,7 @@ public class User {
 	@Column
 	private String roles;
 	
-	@OneToOne
-	TeacherMaster teacherMaster;
-	
-//	@OneToOne
-//	Admin admin;
-//	
-//	@OneToOne
-//	SubAdmin subAdmin;
-//	
-//	@OneToOne
-//	StudentMaster studentMaster;
-	
+
 	public User() {
 		super();
 	}

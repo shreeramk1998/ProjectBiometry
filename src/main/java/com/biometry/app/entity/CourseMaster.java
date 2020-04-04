@@ -1,7 +1,7 @@
 package com.biometry.app.entity;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table
@@ -9,11 +9,11 @@ public class CourseMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer cmID;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courseId")
     private Course course;
    
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "teacherId")
     private TeacherMaster teacher;
    

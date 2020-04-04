@@ -3,6 +3,9 @@ package com.biometry.app.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Cascade;
+
 import java.util.List;
 
 @Entity
@@ -24,18 +27,13 @@ public class TeacherMaster {
     @Column(nullable=false)
     private String teacherName;
     
-    @Column(nullable=false)
-    private String teacherEmail;
-    
-    @Column(nullable=false)
-    private String teacherPass;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "teacher")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "teacher",orphanRemoval = true)
     private List<CourseMaster> courseMasters;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JoinColumn(name = "user_id")
     User user;
+    
     public Integer getTeacherID() {
         return teacherID;
     }
@@ -52,32 +50,31 @@ public class TeacherMaster {
         this.teacherName = teacherName;
     }
 
-    public String getTeacherEmail() {
-        return teacherEmail;
-    }
-
-    public void setTeacherEmail(String teacherEmail) {
-        this.teacherEmail = teacherEmail;
-    }
-
-    public String getTeacherPass() {
-        return teacherPass;
-    }
-
-    public void setTeacherPass(String teacherPass) {
-        this.teacherPass = teacherPass;
-    }
-
+    
     public TeacherMaster() {
     }
 
-    @Override
+    public TeacherMaster(Integer teacherID, String teacherName, List<CourseMaster> courseMasters, User user) {
+		super();
+		this.teacherID = teacherID;
+		this.teacherName = teacherName;
+		this.courseMasters = courseMasters;
+		this.user = user;
+	}
+
+	@Override
     public String toString() {
         return "TeacherMaster{" +
                 "teacherID=" + teacherID +
                 ", teacherName='" + teacherName + '\'' +
-                ", teacherEmail='" + teacherEmail + '\'' +
-                ", teacherPass='" + teacherPass + '\'' +
                 '}';
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

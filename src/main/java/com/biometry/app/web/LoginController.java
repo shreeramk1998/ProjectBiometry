@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping({"/","/login"})
 
@@ -32,6 +34,22 @@ public class LoginController {
     public String showLogin() {
     	return "login";
     }
+    
+    @RequestMapping(value="/class",method = RequestMethod.GET)
+	public @ResponseBody void getIP(HttpSession session,@RequestParam("ip") String ip,@RequestParam("classroom") String classroom) {
+		System.out.println("\n 	recieved module ip ="+ip);
+		TeacherService.classroomIP.put(classroom, ip);
+
+		teacherService.saveMapFile(TeacherService.classroomIP);
+		System.out.println(teacherService.readFromMapFile(System.getenv("BIOMETRY_HOME")+"\\classroom.ser"));
+		//		return "redirect:/teacher";
+	}
+	@GetMapping("/getClassroomIp")
+	public @ResponseBody Map<String, String>getClassroomIp(Model model) {
+		Map<String, String> cmap = teacherService.readFromMapFile(System.getenv("BIOMETRY_HOME")+"\\classroom.ser");
+		model.addAttribute("classroomMap", cmap);
+		return cmap;
+	}
     
 //    @RequestMapping(value="" , method = RequestMethod.POST)
 //    @ResponseBody

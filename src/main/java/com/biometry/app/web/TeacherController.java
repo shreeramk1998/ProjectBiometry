@@ -28,27 +28,15 @@ public class TeacherController {
 	TeacherService teacherService;
 
 	@GetMapping({"","/handle-classroom"})
-	public String getHandleClassroom(Model model) {
+	public String getHandleClassroom(Model model,HttpSession session) {
 		Map<String, String> cmap = teacherService.readFromMapFile(System.getenv("BIOMETRY_HOME")+"\\classroom.ser");
-		model.addAttribute("classroomMap", cmap);	
+//		model.addAttribute("teacherSession", session.getAttribute("userSession"));
+		System.out.println("CMAP"+cmap);
+		model.addAttribute("classroomMap", cmap);
 		return "handle-classroom";
 	}
 
-	@RequestMapping(value="/class",method = RequestMethod.GET)
-	public @ResponseBody void getIP(HttpSession session,@RequestParam("ip") String ip,@RequestParam("classroom") String classroom) {
-		System.out.println("recieved module ip ="+ip);
-		TeacherService.classroomIP.put(classroom, ip);
-
-		teacherService.saveMapFile(TeacherService.classroomIP);
-		System.out.println(teacherService.readFromMapFile(System.getenv("BIOMETRY_HOME")+"\\classroom.ser"));
-		//		return "redirect:/teacher";
-	}
-	@GetMapping("/getClassroomIp")
-	public @ResponseBody Map<String, String>getClassroomIp(Model model) {
-		Map<String, String> cmap = teacherService.readFromMapFile(System.getenv("BIOMETRY_HOME")+"\\classroom.ser");
-		model.addAttribute("classroomMap", cmap);
-		return cmap;
-	}
+	
 
 	@SendTo("/topic/sample")
 	@MessageMapping("/sensors")

@@ -14,6 +14,7 @@ public class UserPrincipal implements UserDetails {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 2799333223830918650L;
 	private User user;
 	
@@ -62,6 +63,14 @@ public class UserPrincipal implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

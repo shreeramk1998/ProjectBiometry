@@ -90,19 +90,22 @@ public class TeacherService {
 		}
 		return false;
 	}
+	
+	public TeacherMaster getByUserId(int id ) {
+		
+		Optional<TeacherMaster> oteacherMaster = teacherMasterRepository.findByCurrentUser(id);
+		if(oteacherMaster.isPresent()) {
+		System.out.println(oteacherMaster.get());	
+		return oteacherMaster.get();
+		}
+		else {
+			return null;
+		}
+	}
 
 	
     
-    public int checkLogin(Map<String,String> requestBody) {
-    	String email = requestBody.get("email");
-    	String password = requestBody.get("password");
-    	Optional<TeacherMaster> teacher = teacherMasterRepository.findByTeacherEmailAndTeacherPass(email, password);
-    	if(teacher.isPresent()) {
-    		return teacher.get().getTeacherID();
-    	}
-    	else
-    		return -1;
-    }
+   
     
     
 }

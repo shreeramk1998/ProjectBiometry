@@ -1,5 +1,6 @@
 package com.biometry.app.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -41,7 +42,8 @@ WebSocketConfigurer
 //	    registry.addEndpoint("/socket").setAllowedOrigins("*").withSockJS();
 //	  }
 //
-	
+	@Autowired
+	WebSocketHandler webSocketHandler;
 	
     @Bean
     public ServletServerContainerFactoryBean createWebSocketContainer() {
@@ -52,6 +54,6 @@ WebSocketConfigurer
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new WebSocketHandler(), "/socket").setAllowedOrigins("*");
+        registry.addHandler(webSocketHandler, "/socket").setAllowedOrigins("*");
     }
 }

@@ -26,6 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsServiceImpl userDetailsServiceImpl;
 	
+	@Autowired
+	CustomSuccessRedirectionHandler customSuccessRedirectionHandler;
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
@@ -33,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.headers().frameOptions().disable();
 		http.authorizeRequests()
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/subAdmin/**").hasRole("SUBADMIN")
@@ -42,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin()
 //		.loginProcessingUrl("/signin")
-		.loginPage("/login").successHandler(new CustomSuccessRedirectionHandler()).permitAll()
+		.loginPage("/login").successHandler(customSuccessRedirectionHandler).permitAll()
 	//		.failureHandler
 	//		((req,res,exp)->{  // Failure handler invoked after authentication failure
 	//	         String errMsg="";

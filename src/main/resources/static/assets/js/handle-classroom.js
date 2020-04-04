@@ -8,7 +8,9 @@ $("#classSel").change(function(){
 $(function(){
 	ws = new WebSocket('ws://localhost:8080/socket');
 	ws.onmessage = function(data) {
-		console.log(data);
+		var jsonObject = JSON.parse(data.data);
+		console.log(jsonObject.studName);
+		
 	}
 	
 });

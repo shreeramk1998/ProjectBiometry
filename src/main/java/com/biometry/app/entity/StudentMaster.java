@@ -2,6 +2,9 @@ package com.biometry.app.entity;
 
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -13,20 +16,21 @@ public class StudentMaster {
     @Column(nullable=false)
     private String studName;
     @Column(nullable=false)
-    private String studEmail;
-    @Column(nullable=false)
-    private Integer roll;
+    private int roll;
     @Column(nullable=false)
     private Long phone;
-    @Column(nullable=false)
-    private String studPass;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="divId")
     private Division div;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="deptId")
     private Dept dept;
-
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.REMOVE,orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    User user;
     
     public Division getDiv() {
         return div;
@@ -63,13 +67,7 @@ public class StudentMaster {
         this.studName = studName;
     }
 
-    public String getStudEmail() {
-        return studEmail;
-    }
-
-    public void setStudEmail(String studEmail) {
-        this.studEmail = studEmail;
-    }
+    
 
     public Integer getRoll() {
         return roll;
@@ -87,13 +85,12 @@ public class StudentMaster {
         this.phone = phone;
     }
 
-    public String getStudPass() {
-        return studPass;
-    }
+	@Override
+	public String toString() {
+		return "StudentMaster [studId=" + studId + ", studName=" + studName + ", roll=" + roll + ", phone=" + phone
+				+ "]";
+	}
 
-    public void setStudPass(String studPass) {
-        this.studPass = studPass;
-    }
 
 
 }

@@ -2,8 +2,7 @@ package com.biometry.app.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.sql.Time;
-import java.util.List;
+
 
 @Entity
 @Table
@@ -11,12 +10,15 @@ public class AttendanceMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer attId;
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="smid")
     private StudentMaster studentMaster;
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cmid")
     private CourseMaster courseMaster;
+    
     @Column
     private Date date;
     
@@ -31,8 +33,6 @@ public class AttendanceMaster {
     public void setAttId(Integer attId) {
         this.attId = attId;
     }
-
-   
 
     public Date getDate() {
         return date;
@@ -73,5 +73,4 @@ public class AttendanceMaster {
 	}
 
 
-   
 }
