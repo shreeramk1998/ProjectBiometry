@@ -70,7 +70,7 @@
 
                <select class="form-control" id="couseSel">
                    <option >Select Course</option>
-                   <option >Maths</option>
+                   <option th:each="course : ${courseList}" th:text="${course.courseName}" th:value="${course.courseId}"></option>
                </select>
       </div>
 
@@ -78,10 +78,10 @@
     <hr>
     <div class="row">
       <div class="col text-center" >
-        <button type="button" class="btn btn-light">Start Session</button>
+        <button type="button" id="startSession" class="btn btn-light">Start Session</button>
       </div>
       <div class="col text-center" >
-        <button type="button" class="btn btn-light">End Session</button>
+        <button id="endSession" type="button" class="btn btn-light">End Session</button>
       </div>
       <div class="col text-center"  >
         <button type="button" class="btn btn-light">
@@ -95,7 +95,7 @@
     <div class="container p-3 " style="border:1px solid">
       <div class="embed-responsive embed-responsive-21by9">
       
-        <iframe class="embed-responsive-item" src="/iframe.html"></iframe>
+        <iframe onload="loadIframe();" class="embed-responsive-item" src="/iframe.html"></iframe>
       
       </div>
     </div>
@@ -113,7 +113,7 @@
         <table class="table table-bordered table-striped mb-0">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Roll #</th>
               <th scope="col">Name of the student</th>
               
               <th scope="col">Date/time</th>
@@ -123,7 +123,7 @@
            <!--  <tr>
               <th scope="row">1</th>
               <td>ram</td>
-              <td>kulkarni</td>
+              
               <td>05/03/2020 12:32 </td>
             </tr> -->
             

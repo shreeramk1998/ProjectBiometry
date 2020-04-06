@@ -12,10 +12,12 @@ import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import com.biometry.app.entity.StudentMaster;
 import com.biometry.app.entity.WebsocketMessage;
 import com.biometry.app.service.StudentMasterService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 @Component
 public class WebSocketHandler extends AbstractWebSocketHandler {
@@ -27,25 +29,14 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException, InterruptedException {
-		System.out.println("New Text Message Received");
+		
 		WebsocketMessage wm = new ObjectMapper().readValue(message.getPayload(), WebsocketMessage.class);
 		if(wm.isArduinoMessage()) {
-			if( !arduinoMap.containsKey(wm.getClassName()) ){
+			if( !arduinoMap.containsKey(wm.getClassName()) ){ // for new websocket session from arduino
 				System.out.println("true");
 				arduinoMap.put(wm.getClassName(), session);
 			}else if ( !wm.isNewConnection() ){
-				String className = wm.getClassName();
-				System.out.println("****************\n browse MAP : "+browserMap+"\n***********");
-				if(browserMap.containsKey(className)) {
-					StudentMaster studentMaster = studentMasterService.getByRollAndDIv(wm.getId(), wm.getClassName());
-					System.out.println("Message :" +wm+" about to be sent \n");
-					if(studentMaster!=null) {
-						String studentJSON = new ObjectMapper().writeValueAsString(studentMaster);
-						browserMap.get(className).sendMessage(new TextMessage(studentJSON));
-					}else {
-						System.out.println("Student not found");
-					}
-				}
+				messageBrowser(wm);
 			}
 			
 		}else {
@@ -60,6 +51,30 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 		Thread.sleep(2000);
 		session.sendMessage(message);
 		System.out.println(arduinoMap);
+	}
+
+
+	private void messageBrowser(WebsocketMessage wm) throws IOException {
+		
+		String className = wm.getClassName();
+		System.out.println("****************\n browse MAP : "+browserMap+"\n***********");
+		if(browserMap.containsKey(className)) {
+			
+		
+			StudentMaster studentMaster = studentMasterService.getByRollAndDiv(wm.getId(), wm.getClassName());
+			System.out.println("Message :" +wm+" about to be sent \n");
+			
+			if(studentMaster!=null) {
+				
+				String studentJSON = new ObjectMapper().writeValueAsString(studentMaster);
+				browserMap.get(className).sendMessage(new TextMessage(studentJSON));
+				
+			}else {
+				System.out.println("Student not found");
+			}
+		}
+		
+		
 	}
 
 

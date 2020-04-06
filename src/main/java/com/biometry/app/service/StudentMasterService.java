@@ -11,7 +11,7 @@ public class StudentMasterService {
 
 	@Autowired
 	StudentMasterRepository studentMasterRepository;
-	public StudentMaster getByRollAndDIv(int id,String div) {
+	public StudentMaster getByRollAndDiv(int id,String div) {
 		return studentMasterRepository.findByRollAndDiv(id, div);
 	}
 	

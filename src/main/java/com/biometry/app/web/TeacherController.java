@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.biometry.app.entity.TeacherMaster;
 import com.biometry.app.entity.WebsocketMessage;
+import com.biometry.app.service.CourseManagementService;
 import com.biometry.app.service.TeacherService;
 
 @Controller
@@ -26,13 +28,17 @@ import com.biometry.app.service.TeacherService;
 public class TeacherController {
 	@Autowired
 	TeacherService teacherService;
-
+	@Autowired
+	CourseManagementService courseManagementService;
+	
 	@GetMapping({"","/handle-classroom"})
 	public String getHandleClassroom(Model model,HttpSession session) {
 		Map<String, String> cmap = teacherService.readFromMapFile(System.getenv("BIOMETRY_HOME")+"\\classroom.ser");
 //		model.addAttribute("teacherSession", session.getAttribute("userSession"));
 		System.out.println("CMAP"+cmap);
 		model.addAttribute("classroomMap", cmap);
+		courseManagementService.getCourseMastersByTeacherId(((TeacherMaster)session.getAttribute("userSession")).getTeacherID());
+		model.addAttribute("courseList", courseManagementService.getCoursesByIds());
 		return "handle-classroom";
 	}
 

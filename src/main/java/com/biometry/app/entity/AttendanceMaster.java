@@ -1,6 +1,9 @@
 package com.biometry.app.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 
 
