@@ -2,6 +2,8 @@ package com.biometry.app.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table
@@ -9,11 +11,13 @@ public class CourseMaster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer cmID;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId")
     private Course course;
    
-    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "teacherId")
     private TeacherMaster teacher;
    

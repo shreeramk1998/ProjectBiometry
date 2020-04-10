@@ -24,7 +24,7 @@ public class StudentMaster {
     @JoinColumn(name="divId")
     private Division div;
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="deptId")
     private Dept dept;
     @JsonIgnore
@@ -89,6 +89,34 @@ public class StudentMaster {
 	public String toString() {
 		return "StudentMaster [studId=" + studId + ", studName=" + studName + ", roll=" + roll + ", phone=" + phone
 				+ "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + roll;
+		result = prime * result + ((studName == null) ? 0 : studName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		StudentMaster other = (StudentMaster) obj;
+		if (roll != other.roll)
+			return false;
+		if (studName == null) {
+			if (other.studName != null)
+				return false;
+		} else if (!studName.equals(other.studName))
+			return false;
+		return true;
 	}
 
 

@@ -1,31 +1,38 @@
 package com.biometry.app.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 
+import com.biometry.app.entity.AttendanceMaster;
+import com.biometry.app.entity.Attendees;
 import com.biometry.app.entity.StudentMaster;
 import com.biometry.app.entity.WebsocketMessage;
-import com.biometry.app.service.StudentMasterService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.biometry.app.service.StudentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpSession;
 @Component
 public class WebSocketHandler extends AbstractWebSocketHandler {
-	Map<String, WebSocketSession> browserMap = new HashMap();
-	Map<String,WebSocketSession> arduinoMap = new HashMap(); 
+	Map<String, WebSocketSession> browserMap = new HashMap<String, WebSocketSession>();
+	Map<String,WebSocketSession> arduinoMap = new HashMap<String, WebSocketSession>(); 
+	Map <String,Set<AttendanceMaster>> classAttendanceMap = new HashMap<String, Set<AttendanceMaster>>();
 	@Autowired
-	StudentMasterService studentMasterService;
-
+	StudentService studentService;
+	
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException, InterruptedException {
@@ -40,8 +47,9 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 			}
 			
 		}else {
-			if(!browserMap.containsKey(wm.getClassName())) {
+			if(!browserMap.containsKey(wm.getClassName())) {// for new websocket session from browser
 				browserMap.put(wm.getClassName(), session);
+				classAttendanceMap.put(wm.getClassName(), new HashSet<AttendanceMaster>());
 			}
 		}
 			
@@ -61,7 +69,8 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 		if(browserMap.containsKey(className)) {
 			
 		
-			StudentMaster studentMaster = studentMasterService.getByRollAndDiv(wm.getId(), wm.getClassName());
+			StudentMaster studentMaster = studentService.getByRollAndDiv(wm.getId(), className);
+			addAttendance(studentMaster,classAttendanceMap.get(className));
 			System.out.println("Message :" +wm+" about to be sent \n");
 			
 			if(studentMaster!=null) {
@@ -75,6 +84,13 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 		}
 		
 		
+	}
+
+
+	private void addAttendance(StudentMaster studentMaster,Set<AttendanceMaster> set) {
+		AttendanceMaster am = new AttendanceMaster();
+		am.setStudentMaster(studentMaster);
+		set.add(am);
 	}
 
 
@@ -95,5 +111,18 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 	protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) throws IOException {
 		System.out.println("New Binary Message Received");
 		session.sendMessage(message);
+
 	}
+
+
+	public Map<String, Set<AttendanceMaster>> getClassAttendanceMap() {
+		return classAttendanceMap;
+	}
+
+
+	
+	
+	
+
+	
 }

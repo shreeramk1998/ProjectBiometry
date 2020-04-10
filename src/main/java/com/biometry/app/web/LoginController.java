@@ -1,6 +1,9 @@
 package com.biometry.app.web;
 
+import com.biometry.app.config.WebSocketHandler;
+import com.biometry.app.entity.AttendanceMaster;
 import com.biometry.app.service.AdminService;
+import com.biometry.app.service.CourseManagementService;
 import com.biometry.app.service.SubAdminService;
 import com.biometry.app.service.TeacherService;
 
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -28,7 +32,10 @@ public class LoginController {
     private SubAdminService subAdminService;
     @Autowired
     private TeacherService teacherService;
-
+    @Autowired
+	CourseManagementService courseManagementService;
+	@Autowired
+	WebSocketHandler webSocketHandler;
     
     @GetMapping("")
     public String showLogin() {
@@ -50,11 +57,18 @@ public class LoginController {
 		model.addAttribute("classroomMap", cmap);
 		return cmap;
 	}
+	@GetMapping("/lol")
+	@ResponseBody 
+	public String hello() {
+		return "hello";
+	} 
+	
+	
     
 //    @RequestMapping(value="" , method = RequestMethod.POST)
 //    @ResponseBody
 //    public Map<String,String> login(@RequestBody Map<String,String> requestBody,Model model) {
-//    	System.out.println( requestBody.keySet() );
+//    	System.out.println( requestBody );
 //        Map<String,String> responseBody=new HashMap<>();
 //        int role = Integer.parseInt( requestBody.get("role"));
 //        int id;
@@ -100,7 +114,8 @@ public class LoginController {
 //        else {
 //        	responseBody.put("message", "invalid submission please retry!");
 //        }
-//        
+        
 //        return responseBody;
+//    	return requestBody;
 //    }
 }

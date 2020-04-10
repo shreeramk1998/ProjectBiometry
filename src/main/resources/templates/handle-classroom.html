@@ -2,6 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
   <style>
   body {
     font-family: "Lato", sans-serif;
@@ -11,7 +14,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <!-- jQuery library -->
-</head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Popper JS -->
@@ -19,6 +21,9 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
 <body>
 
 
@@ -69,8 +74,8 @@
       <div class="col text-center" >
 
                <select class="form-control" id="couseSel">
-                   <option >Select Course</option>
-                   <option th:each="course : ${courseList}" th:text="${course.courseName}" th:value="${course.courseId}"></option>
+                   <option  value=0>Select Course</option>
+                   <option th:each="cm : ${courseMasterList}" th:text="${cm.course.courseName}" th:value="${cm.cmID}"></option>
                </select>
       </div>
 
@@ -78,7 +83,10 @@
     <hr>
     <div class="row">
       <div class="col text-center" >
-        <button type="button" id="startSession" class="btn btn-light">Start Session</button>
+    
+	  <button class="btn btn-light disabled" id="startSession"  type="button"  >start session</button>
+
+      	<label for="sessionTime">Select a time:</label> <input type="time"  id="sessionTime" name="time"> 
       </div>
       <div class="col text-center" >
         <button id="endSession" type="button" class="btn btn-light">End Session</button>
@@ -106,7 +114,7 @@
         <div class="input-group-prepend">
           <div class="input-group-text"><i class="fas fa-search"></i></div>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search">
       </div>
       <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
@@ -119,7 +127,7 @@
               <th scope="col">Date/time</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="attTable">
            <!--  <tr>
               <th scope="row">1</th>
               <td>ram</td>
@@ -133,16 +141,12 @@
 
       </div>
     </div>
+    
+    
 
     <script>
-
-    $(document).on('click', '#click', function () {
-
-      alert("defvs");
-
-
-    });
-    function openNav() {
+    
+   function openNav() {
       document.getElementById("mySidenav").style.width = "180px ";
     }
 
@@ -150,6 +154,6 @@
       document.getElementById("mySidenav").style.width = "0";
     }
     </script>
-<script src="/assets/js/handle-classroom.js"></script>
+	<script src="/assets/js/handle-classroom.js"></script>
   </body>
   </html>

@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table
-@JsonIgnoreProperties(allowGetters = true)
 public class TeacherMaster {
     public List<CourseMaster> getCourseMasters() {
         return courseMasters;

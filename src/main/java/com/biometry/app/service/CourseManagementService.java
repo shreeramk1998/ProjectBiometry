@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.biometry.app.BiometryExceptions.CourseManagementException;
 import com.biometry.app.entity.Course;
 import com.biometry.app.entity.CourseMaster;
 import com.biometry.app.repository.CourseMasterRepository;
@@ -40,4 +41,13 @@ public class CourseManagementService {
 		System.out.println(courseRepository.findByCourseIdIn(courseIds));
 		return courseRepository.findByCourseIdIn(courseIds);
 	}
+	
+	public CourseMaster getCourseMasterById(int id) {
+		if(courseMasterRepository.findById(id).isPresent()) {
+			System.out.println(courseMasterRepository.findById(id).get());
+			return courseMasterRepository.findById(id).get();
+		}
+		throw new CourseManagementException("Error finding associated course");
+	}
+	
 }

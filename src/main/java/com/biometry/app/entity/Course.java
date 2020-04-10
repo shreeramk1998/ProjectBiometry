@@ -7,7 +7,6 @@ import java.util.List;
 
 @Entity
 @Table
-@JsonIgnoreProperties(allowGetters = true)
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
