@@ -1,5 +1,6 @@
 package com.biometry.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int adminId;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     User user;
     public Admin() {

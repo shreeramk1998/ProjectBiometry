@@ -60,7 +60,7 @@ public class TeacherController {
 		model.addAttribute("classroomMap", cmap);
 		List<CourseMaster> cmList = courseManagementService.getCourseMastersByTeacherId(((TeacherMaster)session.getAttribute("userSession")).getTeacherID());
 		model.addAttribute("courseMasterList", cmList);
-		return "handle-classroom";
+		return "teacher/handle-classroom";
 	}
 
 	@PostMapping(consumes = "application/json" ,value = "/attendance")

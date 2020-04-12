@@ -64,7 +64,7 @@
 
 		
        <select class="form-control" id="classSel" >
-           <option>Select Classroom</option>
+           <option value=0>Select Classroom</option>
            <option th:each="class :${classroomMap}" th:value="${class.value}"  th:text="${class.key}"></option>
        </select>
        
@@ -84,12 +84,12 @@
     <div class="row">
       <div class="col text-center" >
     
-	  <button class="btn btn-light disabled" id="startSession"  type="button"  >start session</button>
+	  <button class="btn btn-light" id="startSession"  type="button"  >start session</button>
 
-      	<label for="sessionTime">Select a time:</label> <input type="time"  id="sessionTime" name="time"> 
+      	<label for="sessionTime">Select a time:</label> <input type="time" placeholder="start time" id="sessionTime" name="time"> 
       </div>
       <div class="col text-center" >
-        <button id="endSession" type="button" class="btn btn-light">End Session</button>
+        <button id="endSession" type="button" class="btn btn-light" >End Session</button>
       </div>
       <div class="col text-center"  >
         <button type="button" class="btn btn-light">
@@ -141,9 +141,7 @@
 
       </div>
     </div>
-    
-    
-
+<p th:insert="~{UIFragment/modal.html}"></p>
     <script>
     
    function openNav() {

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+  </style>
+  <link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- jQuery library -->
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<body>
+
+
+  <div id="mySidenav" class="sidenav nav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a th:href="@{/admin}"><i class="fas fa-users"></i> Manage Admin</a>
+    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Manage Department</a>
+    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Perge Data</a>
+    <a th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i> logout</a>
+
+  </div>
+
+  <header>
+
+    <span class="nav-item" style="float: left;font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
+    <nav  class="navbar navbar-default navbar-fixed-top" >
+
+      <a class="navbar-brand" href="#">Brand</a>
+
+      <ul class="nav ml-auto justify-content-end">
+
+        <li class="nav-item">
+          <a class="nav-link disabled" style="color:black; font-family:Courier" href="#">Shreeram</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container p-3 " style="">
+    <h2>Manage Sub-Admin
+      <a href="#" style="color:green"><i class="fa fa-table"></i></a>
+      <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a></h2>
+      <hr>
+      <br>
+      <h2 align="center"><a href="#"  onclick="addSubAdmin()"> Add Sub-Admin<a>
+        <br>
+        <hr>
+
+
+
+        <div class="row text-center " id="emailId">
+          <div class="col text-center" style="background-color:;">
+
+            <h4><label>EmailId</label>
+            </div>
+            <div class="col text-left" style="background-color:;">
+              <input type="email"  class = "form-control"  ><br>
+            </div>
+
+          </div>
+
+
+
+
+
+          <div class="row text-center " id="password">
+            <div class="col text-center" style="background-color:;">
+
+              <h4><label>Password</label>
+              </div>
+              <div class="col text-left" style="background-color:;">
+                <input type="password"  class = "form-control"  ><br>
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="row text-center " id="department">
+              <div class="col text-center" style="background-color:;">
+
+                <h4><label>Department</label>
+                </div>
+                <div class="col text-left" style="background-color:;">
+
+         <select class="form-control" id="DeptSel">
+             <option >Select list (select one):Department</option>
+           <option>1</option>
+           <option>2</option>
+           <option>3</option>
+           <option>4</option>
+         </select>
+                </div>
+
+              </div>
+
+
+                <div class="row text-center " id="Submit">
+                  <div class="col text-center" style="background-color:;">
+                    <button type="button" class="btn btn-primary" id>Submit</button>
+                    <br><hr><br>
+                  </div>
+
+                </div>
+
+                <h2  align="center"><a href="#"  onclick="deleteSubAdmin()"> Delete Sub-Admin<a>
+                  <hr>
+                  <div class="row text-center " id="emailId1">
+                    <div class="col text-center" style="background-color:;">
+
+                      <h4><label>Email-Id</label>
+                      </div>
+                      <div class="col text-left" style="background-color:;">
+                        <input type="email"  class = "form-control"  ><br>
+                      </div>
+
+                    </div>
+                    <div class="col text-center" style="background-color:;" id="delete">
+                      <button type="button" class="btn btn-primary">Delete</button>
+                    </div>
+                  </div>
+
+
+
+                  <br>
+
+
+                  <script>
+
+                  $(function(){
+
+                    $("#emailId").hide();
+                    $("#emailId1").hide();
+                    $("#password").hide();
+                    $("#department").hide();
+                    $("#Submit").hide();
+                    $("#delete").hide();
+
+
+
+                  });
+                  $(document).on('click', '#click', function () {
+
+                    alert("defvs");
+
+
+                  });
+                  function openNav() {
+                    document.getElementById("mySidenav").style.width = "180px ";
+                  }
+
+                  function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                  }
+
+                  function addSubAdmin()
+                  {
+
+                    $("#emailId").show();
+                    $("#password").show();
+                    $("#department").show();
+                    $("#Submit").show();
+
+
+                    $("#emailId1").hide();
+                    $("#delete").hide();
+
+
+
+                  }
+                  function deleteSubAdmin()
+                  {
+                    $("#emailId1").show();
+                    $("#delete").show();
+
+
+                    $("#emailId").hide();
+                    $("#password").hide();
+                    $("#department").hide();
+                    $("#Submit").hide();
+
+
+                  }
+
+                  </script>
+                </body>
+                </html>

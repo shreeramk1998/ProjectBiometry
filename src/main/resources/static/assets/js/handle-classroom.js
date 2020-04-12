@@ -1,10 +1,8 @@
 var ws ;
 $("#classSel").change(function(){
 
-	$('#startSession').addClass("disabled");
-	if($('#sessionTime').val()!='') {
 
-		$('#startSession').removeClass("disabled");
+	if($('#sessionTime').val()!='') {
 	}
 
 	$('#startSession').data('clicked',false);
@@ -22,45 +20,59 @@ $(function(){
 	});
 
 	console.log(new Date().toJSON());
-	ws = new WebSocket('ws://localhost:8080/socket');
+	ws = new WebSocket('ws://192.168.2.5:8080/socket');
 	ws.onmessage = function(data) {
 		let date = new Date();
 		let dateString = date.toDateString();
 		let timeString = date.toLocaleTimeString();
 		let dateTime = dateString.concat(" "+timeString);
 		var jsonObject = JSON.parse(data.data);
+
+		if(jsonObject.newConnection){			
+			return null;
+		}
 		var rowAppend = "<tr><th scope='row'>"+jsonObject.roll+"</th>" +
 		"<td>"+jsonObject.studName+"</td>" +
 		"<td>"+dateTime+"</td></tr>";
 		$("tbody").append(rowAppend);
-		console.log(jsonObject.studName);
 
 	}
-	//popovers
-	//endpopovers
 
 	$('#startSession').click(function() {		
 		$('iframe').css('pointer-events','auto');
 	});
-	
+
 	$('#endSession').click(function() {
 		$('iframe').css('pointer-events','none');
 	});
-	
-	$('#sessionTime').keyup(function(){
-		if($('#sessionTime').val()!='') {
 
-			$('#startSession').removeClass('disabled');
-		}
-	});
-	var token = $("meta[name='_csrf']").attr("content"); 
-	var header = $("meta[name='_csrf_header']").attr("content");
+
+
 	$('#endSession').click(function() {
-		var json = {};
-		if($('#couseSel').find(':selected').val()==0){
-			alert("select a valid course before ending the session!");
+		if($('#couseSel').find(':selected').val()==0 ){
+			$('.modal-title').text("Message!");
+			$('.modal-body').text("Select a valid COURSE before ending the session!");
+			$('#ModalCenter').modal('show');
+			return ;
+		}else if( $("#attTable tr").length==0){
+			$('.modal-title').text("Message!");
+			$('.modal-body').text("No attendance recorded!");
+			$('#ModalCenter').modal('show');
+			return;
+		}else if($('#sessionTime').val()===''){
+			$('.modal-title').text("Message!");
+			$('.modal-body').text("Please specify session TIME before ending the session!");
+			$('#ModalCenter').modal('show');
+			return;
+		}
+		else if($('#classSel').find(':selected').val()==0){
+			$('.modal-title').text("Message!");
+			$('.modal-body').text("Select a valid CLASS before ending the session!");
+			$('#ModalCenter').modal('show');
 			return ;
 		}
+		var json = {};
+
 		json.cmID = $('#couseSel').find(':selected').val();
 		json.date = new Date().toJSON().slice(0,10).split('-').reverse().join('-');
 		json.time = $('#sessionTime').val();
@@ -76,17 +88,21 @@ $(function(){
 			processData:false, //To avoid making query String instead of JSON
 			contentType: 'application/json; charset=utf-8',
 			success:function(response) {
-				
+				if (response==="true") {
+					$('.modal-title').text("Message!");
+					$('.modal-body').text("Successfully saved attendance");
+					$('#ModalCenter').modal('show');
+				}
 			} 
 		});	
 	});
-	
+
 	$("#searchInput").on("keyup", function() {
-	    var value = $(this).val().toLowerCase();
-	    $("#attTable tr").filter(function() {
-	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-	    });
-	  })
+		var value = $(this).val().toLowerCase();
+		$("#attTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	})
 });
 function loadIframe() {
 
