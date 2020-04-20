@@ -1,111 +1,205 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="_csrf" th:content="${_csrf.token}" />
 <!-- default header name is X-CSRF-TOKEN -->
-<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-  <style>
-  body {
-    font-family: "Lato", sans-serif;
-  }
-  </style>
-  <link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- jQuery library -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<style>
+body {
+	font-family: "Lato", sans-serif;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+<!-- jQuery library -->
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <body>
 
 
-  <div id="mySidenav" class="sidenav nav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a th:href="@{/admin/subadmin}"><i class="fa fa-table"></i> Manage SubAdmin</a>
-    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Manage Department</a>
-    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Perge Data</a>
-    <a th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i> logout</a>
+	<div id="mySidenav" class="sidenav nav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a th:href="@{/admin/subadmin}"><i class="fa fa-table"></i> Manage SubAdmin</a> 
+			 <a th:href="@{/logout}"><i
+			class="fas fa-sign-out-alt"></i> logout</a>
 
-  </div>
+	</div>
 
-  <header>
+	<header>
 
-    <span class="nav-item" style="float: left;font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
-    <nav  class="navbar navbar-default navbar-fixed-top" >
+		<span class="nav-item"
+			style="float: left; font-size: 30px; cursor: pointer;"
+			onclick="openNav()">&#9776; </span>
+		<nav class="navbar navbar-default navbar-fixed-top">
 
-      <a class="navbar-brand" href="#">Brand</a>
+			<a class="navbar-brand" href="#">Brand</a>
 
-      <ul class="nav ml-auto justify-content-end">
+			<ul class="nav ml-auto justify-content-end">
 
-        <li class="nav-item">
-          <a class="nav-link disabled" style="color:black; font-family:Courier" href="#">Shreeram</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+				<li class="nav-item"><a class="nav-link disabled"
+					style="color: black; font-family: Courier" href="#">Shreeram</a></li>
+			</ul>
+		</nav>
+	</header>
 
-  <div class="container p-3 " style="">
-    <h2>Manage Department
-      <a href="#" style="color:green"><i class="fa fa-table"></i></a>
-      <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a></h2>
-      <hr>
-      <br>
-      <h2 align="center"><a href="#"  onclick="addDepartment()"> Add Department<a>
-        <br>
-        <hr>
-
-
-
-        <div class="row text-center " id="department">
-          <div class="col text-center" style="background-color:;">
-
-            <h4><label>Department</label>
-            </div>
-            <div class="col text-left" style="background-color:;">
-              <input type="text"  class = "form-control"  ><br>
-            </div>
-
-          </div>
+	<div class="container p-3 " style="">
+		<h2>
+			Manage Department <a href="#" style="color: green"><i
+				class="fa fa-table"></i></a> <a href="" style="color: green"><i
+				class="fas fa-redo-alt" style="float: right; font-size: 0.73em"></i></a>
+		</h2>
+		<hr>
+		<br>
+		<h2 align="center">
+			<a href="#" onclick="addDepartment()"> Add Department<a> <br>
+					<hr>
 
 
 
-                <div class="row text-center " id="Submit">
-                  <div class="col text-center" style="background-color:;">
-                    <button type="button" class="btn btn-primary" id>Submit</button>
-                    <br><hr><br>
-                  </div>
+					<div class="row text-center " id="department">
+						<div class="col text-center" style="background-color:;">
 
-                </div>
+							<h4>
+								<label>Department</label>
+								<form onsubmit="add(this.dept.value); return false;">
+						</div>
+						<div class="col text-left" style="background-color:;">
+							<input type="text" name="dept" class="form-control" required><br>
+						</div>
 
-                <h2  align="center"><a href="#"  onclick="deleteDepartment()"> Delete Department<a>
-                  <hr>
-                  <div class="row text-center " id="department1">
-                    <div class="col text-center" style="background-color:;">
-
-                      <h4><label>Department</label>
-                      </div>
-                      <div class="col text-left" style="background-color:;">
-                        <input type="text"  class = "form-control"  ><br>
-                      </div>
-
-                    </div>
-                    <div class="col text-center" style="background-color:;" id="delete">
-                      <button type="button" class="btn btn-primary">Delete</button>
-                    </div>
-                  </div>
+					</div>
 
 
 
-                  <br>
+					<div class="row text-center " id="Submit">
+						<div class="col text-center" style="background-color:;">
+							<button type="submit" class="btn btn-primary" id="addButton">Submit</button>
+							<br>
+							<hr>
+							<br>
+						</div>
+
+					</div>
+					</form>
+					<h2 align="center">
+						<a href="#" onclick="deleteDepartment()"> Delete Department<a>
+								<hr>
+								<div class="row text-center " id="department1">
+									<div class="col text-center" style="background-color:;">
+
+										<h4>
+											<label>Department</label>
+									</div>
+									<form onsubmit="del(this); return false;">
+										<div class="col text-left" style="background-color:;">
+											<select class="form-control" id="deptSel" >
+           								<option  value=0>Select Department</option>
+          								<option th:each="dept :${departmentList}" th:value="${dept.getDeptId()}"  th:text="${dept.getDeptName()}"></option>
+       </select>
+										</div>
+								</div>
+								<div class="col text-center" style="background-color:;"
+									id="delete">
+									<button type="submit" class="btn btn-primary" id="delButton">Submit</button>
+								</div>
+	</div>
+	<form>
 
 
-                  <script>
+		<br>
+
+		<div th:insert="~{UIFragment/modal.html}"></div>
+
+		<script src="/assets/js/ajaxutils/headerInclusion.js"></script>
+		<script>
+				function add(val) {
+					console.log(val);
+					var json = {deptName:val};
+					var jsonString = JSON.stringify(json);
+					$.ajax({
+						type:"post",
+						url:"/admin/department",
+						data:jsonString,
+						processData:false,
+						contentType: 'application/json; charset=utf-8',
+						success:function(response) {
+							console.log(typeof response);
+							if (response) {
+								$('.modal-title').text("Message!");
+								$('.modal-body').text("Successfully added new Department");
+								$('#ModalCenter').modal('show');
+							}else{
+								$('.modal-title').text("Message!");
+								$('.modal-body').text("Could not add new Department");
+								$('#ModalCenter').modal('show');
+							}
+							
+						}
+					});
+				}
+				function del(val) {
+					console.log(val);
+					if($("#deptSel :selected").val()==0){
+						return ;
+					}
+					warning("This will DELETE all the data related to "+$("#deptSel :selected").text()+
+							" department [NOT RECOMENDED]"); 
+					
+					$('#modalProceed').click(function(){ 		
+						$('#modalProceed').remove();
+					$.ajax({
+						type:"delete",
+						url:"/admin/department/"+$("#deptSel :selected").val(),
+						success:function(response) {
+							console.log(response);
+							if (response) {
+								$('.modal-title').text("Message!");
+								$('.modal-body').text("Successfully deleted Department");
+								$('#ModalCenter').modal('show');
+								$('#modalButton').click(function(){ 									
+								window.location.href = "/admin/department";
+								});
+							}else{
+								$('.modal-title').text("Message!");
+								$('.modal-body').text("Could not perform the operation");
+								$('#ModalCenter').modal('show');
+							}
+							
+						}
+					});
+						});
+				}
+				
+				function warning(content) {
+					if ($('#modalProceed').length === 0) {
+
+					$('.modal-footer').append(
+							"<button type='button' id='modalProceed' class='btn btn-danger' data-toggle='modal'>Proceed</button>"
+							);
+					}
+							$('.modal-title').text("WARNING!");
+							$('.modal-body').text(content);
+							$('#ModalCenter').modal('show');
+							
+							
+				} 
+				</script>
+		<script>
 
                   $(function(){
 
@@ -159,5 +253,5 @@
                   }
 
                   </script>
-                </body>
-                </html>
+</body>
+</html>

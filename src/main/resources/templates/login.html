@@ -33,8 +33,9 @@
 									style="background-image: url(/assets/img/login.jpg); background-size: cover; margin: 0px;"></div>
 							</div>
 							<div class="col-lg-6">
+							<span class="text-info" th:if="${activationMessage!=null}" th:text="${activationMessage}"></span>
 								<div class="p-5">
-									<h4 class="text-dark mb-4">Welcome Back!</h4>
+									<h4 class="text-dark mb-4">Project Biometry </h4>
 										<form class="user" th:action="@{/login}" method="post">
 									
 									<div class="text-center"></div>

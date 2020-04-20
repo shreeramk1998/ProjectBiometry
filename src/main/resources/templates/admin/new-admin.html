@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="_csrf" th:content="${_csrf.token}"/>
+ <meta name="_csrf" th:content="${_csrf.token}"/>
 <!-- default header name is X-CSRF-TOKEN -->
 <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
   <style>
   body {
     font-family: "Lato", sans-serif;
   }
-  </style>
-  <link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <!-- jQuery library -->
@@ -27,10 +27,10 @@
 
   <div id="mySidenav" class="sidenav nav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a th:href="@{/admin}"><i class="fas fa-users"></i> Manage Admin</a>
+    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Manage Admin</a>
+    <a href="C:\Users\Admin\Desktop\Project\markAttendance.html"><i class="fa fa-table"></i> Manage SubAdmin</a>
     <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Manage Department</a>
     <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Perge Data</a>
-    <a th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i> logout</a>
 
   </div>
 
@@ -51,13 +51,12 @@
   </header>
 
   <div class="container p-3 " style="">
-    <h2>Manage Sub-Admin
+    <h2>Manage Admin
       <a href="#" style="color:green"><i class="fa fa-table"></i></a>
       <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a></h2>
       <hr>
       <br>
-      <h2 align="center"><a href="#"  onclick="addSubAdmin()"> Add Sub-Admin<a>
-        <br>
+      <h2 align="center"><a href="#"  onclick="addAdmin()"> Add Admin<a>
         <hr>
 
 
@@ -68,97 +67,36 @@
             <h4><label>EmailId</label>
             </div>
             <div class="col text-left" style="background-color:;">
-              <input type="email" id="username" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" class = "form-control"  ><br>
+              <input type="email"  class = "form-control"  ><br>
             </div>
 
           </div>
 
 
 
-
-
-
-            <div class="row text-center " id="department">
-              <div class="col text-center" style="background-color:;">
-
-                <h4><label>Department</label>
-                </div>
-                <div class="col text-left" style="background-color:;">
-
-         <select class="form-control" id="deptSel">
-             <option value=0 >select Department</option>
-           <option th:each="dept :${deptMap}" th:value="${dept.key}"  th:text="${dept.value}"></option>
-         </select>
-                </div>
-
-              </div>
-
-
                 <div class="row text-center " id="Submit">
                   <div class="col text-center" style="background-color:;">
-                    <button type="button" class="btn btn-primary" id="submit">Submit</button>
+                    <button type="button" class="btn btn-primary" id>Submit</button>
                     <br><hr><br>
                   </div>
 
                 </div>
 
-                <h2  align="center"><a href="#"  onclick="deleteSubAdmin()"> Delete Sub-Admin<a>
-                  <hr>
-                  <div class="row text-center " id="emailId1">
-                    <div class="col text-center" style="background-color:;">
-
-                      <h4><label>Email-Id</label>
-                      </div>
-                      <div class="col text-left" style="background-color:;">
-                        <input type="email"  class = "form-control"  ><br>
-                      </div>
-
-                    </div>
-                    <div class="col text-center" style="background-color:;" id="delete">
-                      <button type="button" class="btn btn-primary">Delete</button>
-                    </div>
+               
                   </div>
 
 
 
                   <br>
-
-<div th:insert="~{UIFragment/modal.html}"></div>
-		<script src="/assets/js/ajaxutils/headerInclusion.js"></script>
+				<div th:insert="~{UIFragment/modal.html}"></div>
+				<script src="/assets/js/ajaxutils/headerInclusion.js"></script>
                   <script>
 
                   $(function(){
-					
-                	$('#submit').click(function(){
-                		if($('#username').val() == '' || $("#deptSel :selected").val()==0){
-                			alert("fill properly before submitting"); 
-                			return;
-                		} 
-                		var json = {
-                				username : $('#username').val(),
-                				department : $('#deptSel :checked').val()
-                		}
-                		var jsonString = JSON.stringify(json);
-                		$.ajax({
-                			type:"post",
-                			url:"/admin/subadmin",
-                			processData:false,
-    						contentType: 'application/json; charset=utf-8',
-                			data:jsonString,
-                			success:function(response){
-                				$('.modal-title').text("Message!");
-								$('.modal-body').text(response);
-								$('#ModalCenter').modal('show');
-                				
-                			}
-                		});
-                		
-                	});
-                	  
+
                     $("#emailId").hide();
                     $("#emailId1").hide();
-                   
-                    $("#department").hide();
+                    $("#password").hide();
                     $("#Submit").hide();
                     $("#delete").hide();
 
@@ -179,11 +117,11 @@
                     document.getElementById("mySidenav").style.width = "0";
                   }
 
-                  function addSubAdmin()
+                  function addAdmin()
                   {
 
                     $("#emailId").show();
-                    
+                    $("#password").show();
                     $("#department").show();
                     $("#Submit").show();
 
@@ -194,15 +132,14 @@
 
 
                   }
-                  function deleteSubAdmin()
+                  function deleteAdmin()
                   {
                     $("#emailId1").show();
                     $("#delete").show();
 
 
                     $("#emailId").hide();
-                    
-                    $("#department").hide();
+                    $("#password").hide();
                     $("#Submit").hide();
 
 

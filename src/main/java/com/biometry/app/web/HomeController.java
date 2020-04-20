@@ -1,7 +1,12 @@
 package com.biometry.app.web;
 
 import com.biometry.app.config.WebSocketHandler;
+import com.biometry.app.entity.Admin;
 import com.biometry.app.entity.AttendanceMaster;
+import com.biometry.app.entity.ConfirmationToken;
+import com.biometry.app.entity.User;
+import com.biometry.app.repository.ConfirmationTokenRepo;
+import com.biometry.app.repository.UserRepository;
 import com.biometry.app.service.AdminService;
 import com.biometry.app.service.CourseManagementService;
 import com.biometry.app.service.SubAdminService;
@@ -25,7 +30,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping({"/","/login"})
 
-public class LoginController {
+public class HomeController {
     @Autowired
     private AdminService adminService;
     @Autowired
@@ -36,7 +41,10 @@ public class LoginController {
 	CourseManagementService courseManagementService;
 	@Autowired
 	WebSocketHandler webSocketHandler;
-    
+	@Autowired
+	ConfirmationTokenRepo confirmationTokenRepo;
+    @Autowired
+    UserRepository userRepository;
     @GetMapping("")
     public String showLogin() {
     	return "login";
@@ -62,7 +70,18 @@ public class LoginController {
 	public String hello() {
 		return "hello";
 	} 
-	
+	@RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
+	public String confirmUserAccount(Model model , @RequestParam("token") String token) {
+		ConfirmationToken confToken = confirmationTokenRepo.findByConfirmationToken(token);
+		if(confToken!=null) {
+			User user = userRepository.findByUserNameIgnoreCase(confToken.getUser().getUserName());
+            user.setEnabled(true);
+            userRepository.save(user);
+            confirmationTokenRepo.delete(confToken);
+			model.addAttribute("activationMessage", "Successfully activated please");
+		}
+		return "login";
+	}
 	
     
 //    @RequestMapping(value="" , method = RequestMethod.POST)

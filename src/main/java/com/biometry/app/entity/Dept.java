@@ -1,5 +1,6 @@
 package com.biometry.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -14,8 +15,10 @@ public class Dept {
     private Integer deptId;
     @Column
     private String deptName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dept")
+    @JsonIgnore
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "dept")
     private List<StudentMaster> studs;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "dept")
     private List<SubAdmin> subAdmins;
 
@@ -47,7 +50,12 @@ public class Dept {
 
     }
 
-    @Override
+    public Dept(String deptName) {
+		super();
+		this.deptName = deptName;
+	}
+
+	@Override
     public String toString() {
         return "Dept{" +
                 "deptId=" + deptId +

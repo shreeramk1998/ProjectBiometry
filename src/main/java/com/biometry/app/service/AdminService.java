@@ -9,6 +9,8 @@ import com.biometry.app.repository.SubAdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -20,9 +22,22 @@ public class AdminService {
     @Autowired
     private DeptRepository deptRepository;
 
-    @Autowired
+    public DeptRepository getDeptRepository() {
+		return deptRepository;
+	}
+	@Autowired
     private SubAdminRepository subAdminRepository;
-//
+
+	public Map<Integer,String> getAllDepartments() {
+		List<Dept> depts = deptRepository.findAll();
+		if(depts != null) {
+			Map<Integer,String> deptMap = new HashMap<>();
+			depts.forEach(d-> deptMap.put(d.getDeptId(), d.getDeptName()) );
+			return deptMap;
+		}
+		return null;
+	}
+	
 //    public int checkLogin(Map<String,String> requestBody) {
 //        String email = requestBody.get("email");
 //        String password = requestBody.get("password");
@@ -64,31 +79,28 @@ public class AdminService {
 //        }
 //    }
 //
-//    public int addDepts(Map<String,String> requestBody) {
-//        String name = requestBody.get("name");
-//        Optional<Dept> dept=deptRepository.findByDeptName(name);
-//        if(!dept.isPresent()) {
-//            Dept newDept=new Dept();
-//            newDept.setDeptName(name);
-//            deptRepository.save(newDept);
-//            dept = deptRepository.findByDeptName(name);
-//            return dept.get().getDeptId();
-//        }
-//        else {
-//            return -1;
-//        }
-//    }
+    public boolean addDepts(Dept dept) {
+        String name = dept.getDeptName();
+        Optional<Dept> odept=deptRepository.findByDeptName(name);
+        if(!odept.isPresent()) {
+            
+            if(deptRepository.save(dept)!=null) {
+            	return true;
+            }
+        }
+        return false;
+        
+    }
 //    
-//    public int deleteDepts(Map<String,String> requestBody) {
-//    	String name = requestBody.get("name");
-//        Optional<Dept> dept=deptRepository.findByDeptName(name);
-//        if(dept.isPresent()) {
-//        	deptRepository.deleteById(dept.get().getDeptId());
-//        	return 1;
-//        }
-//        else
-//        	return -1;
-//    }
+    public boolean deleteDepts(int id) {
+        
+        if(deptRepository.existsById(id)) {
+        	deptRepository.delete(deptRepository.getOne(id));
+        	return true;
+        }
+        else
+        	return false;
+    }
 //
 //    public int addSubAdmins(Map<String,String> requestBody) {
 //        String email = requestBody.get("email");

@@ -10,80 +10,95 @@ import java.util.List;
 @Entity
 @Table
 public class StudentMaster {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer studId;
-    @Column(nullable=false)
-    private String studName;
-    @Column(nullable=false)
-    private int roll;
-    @Column(nullable=false)
-    private Long phone;
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name="divId")
-    private Division div;
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="deptId")
-    private Dept dept;
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.REMOVE,orphanRemoval = true)
-    @JoinColumn(name = "user_id")
-    User user;
-    
-    public Division getDiv() {
-        return div;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer studId;
+	@Column(nullable=false)
+	private String studName;
+	@Column(nullable=false)
+	private int roll;
+	@Column(nullable=false)
+	private Long phone;
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="divId")
+	private Division div;
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="deptId")
+	private Dept dept;
+	@JsonIgnore
+	@OneToMany(orphanRemoval = true,fetch = FetchType.LAZY,mappedBy = "studentMaster",cascade = CascadeType.ALL)
+	private List<AttendanceMaster> amList;
 
-    public void setDiv(Division div) {
-        this.div = div;
-    }
 
-    public Dept getDept() {
-        return dept;
-    }
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.REMOVE,orphanRemoval = true)
+	@JoinColumn(name = "user_id")
+	User user;
 
-    public void setDept(Dept dept) {
-        this.dept = dept;
-    }
 
-    public StudentMaster() {
-    }
+	public List<AttendanceMaster> getAmList() {
+		return amList;
+	}
 
-    public Integer getStudId() {
-        return studId;
-    }
+	public void setAmList(List<AttendanceMaster> amList) {
+		this.amList = amList;
+	}
 
-    public void setStudId(Integer studId) {
-        this.studId = studId;
-    }
+	public void setRoll(int roll) {
+		this.roll = roll;
+	}
+	public Division getDiv() {
+		return div;
+	}
 
-    public String getStudName() {
-        return studName;
-    }
+	public void setDiv(Division div) {
+		this.div = div;
+	}
 
-    public void setStudName(String studName) {
-        this.studName = studName;
-    }
+	public Dept getDept() {
+		return dept;
+	}
 
-    
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
 
-    public Integer getRoll() {
-        return roll;
-    }
+	public StudentMaster() {
+	}
 
-    public void setRoll(Integer roll) {
-        this.roll = roll;
-    }
+	public Integer getStudId() {
+		return studId;
+	}
 
-    public Long getPhone() {
-        return phone;
-    }
+	public void setStudId(Integer studId) {
+		this.studId = studId;
+	}
 
-    public void setPhone(Long phone) {
-        this.phone = phone;
-    }
+	public String getStudName() {
+		return studName;
+	}
+
+	public void setStudName(String studName) {
+		this.studName = studName;
+	}
+
+	public Integer getRoll() {
+		return roll;
+	}
+
+	public void setRoll(Integer roll) {
+		this.roll = roll;
+	}
+
+	public Long getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Long phone) {
+		this.phone = phone;
+	}
 
 	@Override
 	public String toString() {

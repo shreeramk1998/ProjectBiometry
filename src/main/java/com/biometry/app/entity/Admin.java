@@ -18,9 +18,8 @@ public class Admin{
     public Admin() {
     }
 
-    public Admin(int adminId, User user) {
+    public Admin(User user) {
 		super();
-		this.adminId = adminId;
 		this.user = user;
 	}
 

@@ -25,9 +25,9 @@ public class SubAdmin {
 	public Dept getDept() {
 		return dept;
 	}
-	public SubAdmin(Integer subadId, User user, Dept dept) {
+	public SubAdmin( User user, Dept dept) {
 		super();
-		this.subadId = subadId;
+		
 		this.user = user;
 		this.dept = dept;
 	}

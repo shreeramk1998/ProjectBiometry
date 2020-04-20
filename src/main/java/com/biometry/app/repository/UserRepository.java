@@ -7,4 +7,6 @@ import com.biometry.app.entity.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByUserName(String userName);
+
+	User findByUserNameIgnoreCase(String userName);
 }

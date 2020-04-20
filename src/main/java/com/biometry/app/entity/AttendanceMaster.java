@@ -18,7 +18,7 @@ public class AttendanceMaster {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer attId;
     
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="smid")
     private StudentMaster studentMaster;
     

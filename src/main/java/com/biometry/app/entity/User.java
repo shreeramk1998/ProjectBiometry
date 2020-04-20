@@ -30,7 +30,10 @@ public class User {
 	private String password;	
 	@Column
 	private String roles;
-	
+	private boolean isEnabled;
+
+
+
 
 	public User() {
 		super();
@@ -101,10 +104,20 @@ public class User {
 	}
 
 
+	public boolean isEnabled() {
+		return isEnabled;
+	}
+	
+	
+	
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
+	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", roles=" + roles + "]";
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", roles=" + roles
+				+ ", isEnabled=" + isEnabled + "]";
 	}
 	
 

@@ -50,10 +50,6 @@ public class CustomSuccessRedirectionHandler extends SimpleUrlAuthenticationSucc
 		}else if(isSubAdmin(roles)) {
 			return "/subAdmin";
 		}else if(isTeacher(roles)) {
-			if(teacherService==null) {
-				
-				System.out.println("true");
-			}
 			TeacherMaster teacherMaster = teacherService.getByUserId(userId);
 			if(teacherMaster!= null) {
 				this.session.setAttribute("userSession", teacherMaster);
