@@ -2,6 +2,8 @@ package com.biometry.app.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class SubAdmin {
@@ -9,7 +11,8 @@ public class SubAdmin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer subadId;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     User user;
     
     @ManyToOne

@@ -3,9 +3,12 @@ package com.biometry.app.service;
 import com.biometry.app.entity.Admin;
 import com.biometry.app.entity.Dept;
 import com.biometry.app.entity.SubAdmin;
+import com.biometry.app.entity.User;
 import com.biometry.app.repository.AdminRepository;
 import com.biometry.app.repository.DeptRepository;
 import com.biometry.app.repository.SubAdminRepository;
+import com.biometry.app.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +21,8 @@ import java.util.Optional;
 public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
-
+    @Autowired
+    UserRepository userRepository;
     @Autowired
     private DeptRepository deptRepository;
 
@@ -133,4 +137,15 @@ public class AdminService {
 //    	else
 //    		return -1;
 //    }
+
+	public User updateAdmin(Map<String, String> userDetails) {
+		String username = userDetails.get("username");
+		String password = userDetails.get("password");
+		
+		User user = userRepository.findByUserNameIgnoreCase(username);
+		user.setPassword(password);
+		
+		return userRepository.save(user);
+		
+	}
 }

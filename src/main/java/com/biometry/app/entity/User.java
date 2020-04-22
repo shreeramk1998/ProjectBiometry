@@ -19,10 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Table
 public class User {
 
-	@Autowired
+	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Column
 	private String userName;

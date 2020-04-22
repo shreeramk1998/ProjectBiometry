@@ -26,35 +26,11 @@
 
 <body>
 
+<div th:replace="UIFragment/baseNavigation::teacher-sidebar"></div>
 
-  <div id="mySidenav" class="sidenav nav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Handle Classroom</a>
-    <a href="C:\Users\Admin\Desktop\Project\markAttendance.html"><i class="fa fa-table"></i> Manage Attendance</a>
-
-    <a href="C:\Users\Admin\Desktop\Project\substitute.html"><i class="fas fa-exchange-alt"></i> Substitute</a>
-    <a href="C:\Users\Admin\Desktop\Project\manageMe.html"><i class="fa fa-user"></i> Manage Me</a>
-	<a th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i> logout</a>
-        
-    
-  </div>
-
-  <header>
-
-    <span class="nav-item" style="float: left;font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
-    <nav  class="navbar navbar-default navbar-fixed-top" >
-
-      <a class="navbar-brand" href="#">Project Biometry</a>
-
-      <ul class="nav ml-auto justify-content-end">
-
-        <li class="nav-item">
-          <a class="nav-link disabled" style="color:black; font-family:Courier" href="#" th:text="${session.userSession.teacherName}"></a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
+  <header th:replace="UIFragment/baseNavigation::header"></header>
+  
+  
   <div class="container p-3 "  >
   <p1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
     <h1>Class Session <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a> </h1>
@@ -141,17 +117,8 @@
 
       </div>
     </div>
-<p th:insert="~{UIFragment/modal.html}"></p>
-    <script>
-    
-   function openNav() {
-      document.getElementById("mySidenav").style.width = "180px ";
-    }
-
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-    </script>
+	<div th:insert="~{UIFragment/modal.html}"></div>
+    <th:block th:replace="UIFragment/baseNavigation::navigateScript"></th:block>
 	<script src="/assets/js/handle-classroom.js"></script>
   </body>
   </html>

@@ -1,131 +1,129 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="_csrf" th:content="${_csrf.token}" />
 <!-- default header name is X-CSRF-TOKEN -->
-<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-  <style>
-  body {
-    font-family: "Lato", sans-serif;
-  }
-  </style>
-  <link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- jQuery library -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<style>
+body {
+	font-family: "Lato", sans-serif;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+<!-- jQuery library -->
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <body>
+	<div th:replace="UIFragment/baseNavigation::admin-sidebar"></div>
+
+	<header th:replace="UIFragment/baseNavigation::header"></header>
 
 
-  <div id="mySidenav" class="sidenav nav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a th:href="@{/admin}"><i class="fas fa-users"></i> Manage Admin</a>
-    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Manage Department</a>
-    <a href="C:\Users\Admin\Desktop\Project\teacherDashboard.html"><i class="fas fa-users"></i> Perge Data</a>
-    <a th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i> logout</a>
-
-  </div>
-
-  <header>
-
-    <span class="nav-item" style="float: left;font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
-    <nav  class="navbar navbar-default navbar-fixed-top" >
-
-      <a class="navbar-brand" href="#">Brand</a>
-
-      <ul class="nav ml-auto justify-content-end">
-
-        <li class="nav-item">
-          <a class="nav-link disabled" style="color:black; font-family:Courier" href="#">Shreeram</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="container p-3 " style="">
-    <h2>Manage Sub-Admin
-      <a href="#" style="color:green"><i class="fa fa-table"></i></a>
-      <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a></h2>
-      <hr>
-      <br>
-      <h2 align="center"><a href="#"  onclick="addSubAdmin()"> Add Sub-Admin<a>
-        <br>
-        <hr>
+	<div class="container p-3 " style="">
+		<h2>
+			Manage Sub-Admin <a href="#" style="color: green"><i
+				class="fa fa-table"></i></a> <a href="" style="color: green"><i
+				class="fas fa-redo-alt" style="float: right; font-size: 0.73em"></i></a>
+		</h2>
+		<hr>
+		<br>
+		<h2 align="center">
+			<a href="#" onclick="addSubAdmin()"> Add Sub-Admin<a> <br>
+					<hr>
 
 
 
-        <div class="row text-center " id="emailId">
-          <div class="col text-center" style="background-color:;">
+					<div class="row text-center " id="emailId">
+						<div class="col text-center" style="background-color:;">
 
-            <h4><label>EmailId</label>
-            </div>
-            <div class="col text-left" style="background-color:;">
-              <input type="email" id="username" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" class = "form-control"  ><br>
-            </div>
+							<h4>
+								<label>EmailId</label>
+						</div>
+						<div class="col text-left" style="background-color:;">
+							<input type="email" id="username"
+								pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+								class="form-control"><br>
+						</div>
 
-          </div>
+					</div>
 
 
 
 
 
 
-            <div class="row text-center " id="department">
-              <div class="col text-center" style="background-color:;">
+					<div class="row text-center " id="department">
+						<div class="col text-center" style="background-color:;">
 
-                <h4><label>Department</label>
-                </div>
-                <div class="col text-left" style="background-color:;">
+							<h4>
+								<label>Department</label>
+						</div>
+						<div class="col text-left" style="background-color:;">
 
-         <select class="form-control" id="deptSel">
-             <option value=0 >select Department</option>
-           <option th:each="dept :${deptMap}" th:value="${dept.key}"  th:text="${dept.value}"></option>
-         </select>
-                </div>
+							<select class="form-control" id="deptSel">
+								<option value=0>select Department</option>
+								<option th:each="dept :${deptMap}" th:value="${dept.key}"
+									th:text="${dept.value}"></option>
+							</select>
+						</div>
 
-              </div>
-
-
-                <div class="row text-center " id="Submit">
-                  <div class="col text-center" style="background-color:;">
-                    <button type="button" class="btn btn-primary" id="submit">Submit</button>
-                    <br><hr><br>
-                  </div>
-
-                </div>
-
-                <h2  align="center"><a href="#"  onclick="deleteSubAdmin()"> Delete Sub-Admin<a>
-                  <hr>
-                  <div class="row text-center " id="emailId1">
-                    <div class="col text-center" style="background-color:;">
-
-                      <h4><label>Email-Id</label>
-                      </div>
-                      <div class="col text-left" style="background-color:;">
-                        <input type="email"  class = "form-control"  ><br>
-                      </div>
-
-                    </div>
-                    <div class="col text-center" style="background-color:;" id="delete">
-                      <button type="button" class="btn btn-primary">Delete</button>
-                    </div>
-                  </div>
+					</div>
 
 
+					<div class="row text-center " id="Submit">
+						<div class="col text-center" style="background-color:;">
+							<button type="button" class="btn btn-primary" id="submit">Submit</button>
+							<br>
+							<hr>
+							<br>
+						</div>
 
-                  <br>
+					</div>
 
-<div th:insert="~{UIFragment/modal.html}"></div>
-		<script src="/assets/js/ajaxutils/headerInclusion.js"></script>
-                  <script>
+					<h2 align="center">
+						<a href="#" onclick="deleteSubAdmin()"> Delete Sub-Admin<a>
+								<hr>
+								<div class="row text-center " id="emailId1">
+									<div class="col text-center" style="background-color:;">
+
+										<h4>
+											<label>Email-Id</label>
+									</div>
+									<div class="col text-left" style="background-color:;">
+										<input type="email" id="delusername" class="form-control"><br>
+									</div>
+
+								</div>
+								<div class="col text-center" style="background-color:;"
+									id="delete">
+									<button type="button" id="del" class="btn btn-primary">Delete</button>
+								</div>
+	</div>
+
+
+
+	<br>
+
+	<div th:insert="~{UIFragment/modal.html}"></div>
+	<th:block th:replace="UIFragment/baseNavigation::navigateScript"></th:block>
+	<script src="/assets/js/ajaxutils/headerInclusion.js"></script>
+	<script>
 
                   $(function(){
 					
@@ -154,6 +152,32 @@
                 		});
                 		
                 	});
+                	$('#del').click(function(){
+                		if($('#delusername').val() == '' ){
+                			alert("fill properly before submitting"); 
+                			return;
+                		} 
+                		
+                		$.ajax({
+                			type:"delete",
+                			url:"/admin/sub-admin/"+$('#delusername').val(),
+                			success:function(response){
+                				
+                				if(response){
+                					$('.modal-title').text("Message!");
+    								$('.modal-body').text("Deleted the requested account");
+    								$('#ModalCenter').modal('show');	
+                				}else{
+                					$('.modal-title').text("Message!");
+    								$('.modal-body').text("Could NOT Delete the requested account!");
+    								$('#ModalCenter').modal('show');
+                				}
+                				
+                				
+                			}
+                		});
+                		
+                	});
                 	  
                     $("#emailId").hide();
                     $("#emailId1").hide();
@@ -171,13 +195,7 @@
 
 
                   });
-                  function openNav() {
-                    document.getElementById("mySidenav").style.width = "180px ";
-                  }
 
-                  function closeNav() {
-                    document.getElementById("mySidenav").style.width = "0";
-                  }
 
                   function addSubAdmin()
                   {
@@ -209,5 +227,5 @@
                   }
 
                   </script>
-                </body>
-                </html>
+</body>
+</html>

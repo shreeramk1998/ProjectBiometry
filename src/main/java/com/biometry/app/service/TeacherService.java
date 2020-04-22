@@ -1,6 +1,10 @@
 package com.biometry.app.service;
 
+import com.biometry.app.entity.CourseMaster;
+import com.biometry.app.entity.Division;
 import com.biometry.app.entity.TeacherMaster;
+import com.biometry.app.repository.CourseMasterRepository;
+import com.biometry.app.repository.DivRepository;
 import com.biometry.app.repository.TeacherMasterRepository;
 
 import java.io.File;
@@ -11,6 +15,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -21,6 +26,12 @@ import org.springframework.stereotype.Service;
 public class TeacherService {
     @Autowired
     private TeacherMasterRepository teacherMasterRepository;
+    @Autowired
+    DivRepository divRepository;
+    @Autowired
+    ReportService reportService;
+    @Autowired
+    CourseMasterRepository courseMasterRepository;
     
     public static Map<String,String> classroomIP = new HashMap<String, String>();
 	static {
@@ -104,8 +115,19 @@ public class TeacherService {
 	}
 
 	
-    
+    public List<Division> getAllDivisions(){
+    	return divRepository.findAll();
+    }
    
+    public boolean preparePdfContent(int id,String name,int divId,int cmID) {
+    	Map<String, Object> parameter = new HashMap<>();
+    	parameter.put("teacherName", name);
+    	parameter.put("className", divRepository.findById(id).get());
+    	CourseMaster cm = courseMasterRepository.findById(cmID).get();
+    	parameter.put("courseName", cm.getCourse().getCourseName());
+//    	reportService.exportReport(Integer.toString(id), parameter, list)
+    	return true;
+    }
     
     
 }

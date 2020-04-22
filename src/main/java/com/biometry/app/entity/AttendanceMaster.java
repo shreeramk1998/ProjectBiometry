@@ -7,8 +7,10 @@ import org.springframework.web.context.annotation.SessionScope;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 
 @Entity
@@ -27,10 +29,12 @@ public class AttendanceMaster {
     private CourseMaster courseMaster;
     
     @Column
+    @Temporal(TemporalType.DATE)
     private Date date;
     
     @Column
-    private Time time;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date time;
     
 
     public AttendanceMaster() {
@@ -61,7 +65,7 @@ public class AttendanceMaster {
 	
 
 	public AttendanceMaster(Integer attId, StudentMaster studentMaster, CourseMaster courseMaster, Date date,
-			Time time) {
+			Date time) {
 		super();
 		this.attId = attId;
 		this.studentMaster = studentMaster;
@@ -86,11 +90,15 @@ public class AttendanceMaster {
 		this.courseMaster = courseMaster;
 	}
 
-	public Time getTime() {
-		return time;
+	public Date getTime() throws ParseException {
+		SimpleDateFormat simpleTime = new SimpleDateFormat("HH:mm");
+		System.out.println(simpleTime.format(time));
+		this.time = simpleTime.parse(simpleTime.format(time));
+//		System.out.println(time);
+		return this.time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 

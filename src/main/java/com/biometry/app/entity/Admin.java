@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table
-@JsonIgnoreProperties(allowGetters = true)
 public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

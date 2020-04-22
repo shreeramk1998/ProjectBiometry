@@ -10,7 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
-
-	boolean existsByUser(User user);
-   
+	boolean deleteByUser(User user);
 }

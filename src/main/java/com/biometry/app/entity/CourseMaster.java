@@ -16,7 +16,7 @@ public class CourseMaster {
     @JoinColumn(name = "courseId")
     private Course course;
    
-    @JsonIgnore
+    
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "teacherId")
     private TeacherMaster teacher;

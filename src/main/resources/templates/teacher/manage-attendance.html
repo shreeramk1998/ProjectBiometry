@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+<!-- default header name is X-CSRF-TOKEN -->
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+  <style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+  </style>
+  <link rel="stylesheet" type="text/css" href="/assets/css/sidebar.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- jQuery library -->
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<body>
+
+
+ <div th:replace="UIFragment/baseNavigation::teacher-sidebar"></div>
+
+  <header th:replace="UIFragment/baseNavigation::header"></header>
+
+ 
+
+  <!-- <form class="" action="index.html" method="post"> -->
+
+
+    <div class="container p-3 " style="">
+      <h2>Manage Attendance
+        <a href="#" style="color:green"><i class="fa fa-table"></i></a>
+        <a href="" style="color:green"><i class="fas fa-redo-alt" style="float:right;font-size: 0.73em"></i></a></h2>
+        <hr>
+        <br>
+       <!--  <h2 align="center"><a href="#"  onclick="markAttendance()"> Mark Attendance<a>
+          <hr>
+
+
+
+          <div class="row text-center " id="studentId">
+            <div class="col text-center"  >
+
+              <h4><label>Student_ID</label>
+              </div>
+              <div class="col text-left"  >
+                <input type="text"  class = "form-control" id="idInput" name="studid"  ><br>
+              </div>
+            </div> 
+
+
+            <div class="row text-center " id="year">
+              <div class="col text-center"  >
+                <h4><label>Year</label>
+                </div>
+                <div class="col text-left"  >
+                  <input type="text"   class="form-control" id="yearInput" name="year" ><br>
+
+                </div>
+
+
+
+              </div>
+
+              <div class="row text-center " id="division">
+                <div class="col text-center"  >
+                  <h4><label>Division</label>
+                  </div>
+                  <div class="col text-left"  >
+                    <input type="text"   class="form-control"  id="divisionInput" name="division" ><br>
+
+                  </div>
+                </div>
+
+
+                <div class="row text-center " id="timing">
+                  <div class="col text-center"  >
+                    <h4><label>Time</label>
+                    </div>
+                    <div class="col text-center"  >
+                      <div class="row text-center ">
+                        <div class="col text-center"  >
+                          <input type="text"  placeholder="From" class="form-control" id="fromTimeInput" name="fromTime">
+                        </div>
+
+                        <div class="col text-center"  >
+                          <input type="text"  placeholder="To" class="form-control" id="to  TimeInput" name="toTime" ><br>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row text-center " id="date">
+                    <div class="col text-center"  >
+                      <h4><label>Date</label>
+                      </div>
+                      <div class="col text-left"  >
+                        <input type="text"  class="form-control" id="dateInput"  name="date"><br>
+                      </div>
+                    </div>
+
+
+                    <div class="row text-center " id="update">
+                      <div class="col text-center"  >
+                        <input type="submit" value="Update" class="btn btn-primary" id="updateSubmit">
+                        <br><hr><br>
+                      </div>
+
+                    </div>
+                  <!-- </form> -->
+-->
+
+                  <form  th:action="@{/teacher/get-report}" method="get">
+
+				<h2>
+					<a href="#" onclick="reportGeneration()"> Generate Report</a>
+				</h2>
+				<hr>
+
+				<div class="row " id="report">
+					<div class="col text-right">
+
+						<select name="class" class="form-control" id="classSel">
+							<option value=0>Class</option>
+							<option th:each="class : ${classList}" th:value="${class.divId}" th:text="${class.divName}"></option>
+						</select>
+					</div>
+					<div class="col text-right">
+
+						<select name="courseM" class="form-control" id="classSel">
+							<option value=0>Course</option>
+							<option th:each="courseM : ${courseMList}" th:value="${courseM.cmID}" th:text="${courseM.course.courseName}"></option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col text-center">
+						<input type="submit" value="Generate" class="btn btn-primary"
+							id="generateSubmit">
+					</div>
+				</div>
+			</form>
+
+
+                  </div>
+
+                  <br>
+
+				<th:block th:replace="UIFragment/baseNavigation::navigateScript"></th:block>
+		<script>
+						
+			$(function() {
+				$("#studentId").hide();
+				$("#year").hide();
+				$("#division").hide();
+				$("#timing").hide();
+				$("#date").hide();
+				$("#update").hide();
+				$("#report").hide();
+
+			});
+			$(document).on('click', '#click', function() {
+
+				alert("defvs");
+
+			});
+
+			function markAttendance() {
+				$("#studentId").show();
+				$("#year").show();
+				$("#division").show();
+				$("#timing").show();
+				$("#date").show();
+				$("#update").show();
+
+				$("#report").hide();
+
+			}
+			function reportGeneration() {
+				$("#report").show();
+
+				$("#studentId").hide();
+				$("#year").hide();
+				$("#division").hide();
+				$("#timing").hide();
+				$("#date").hide();
+				$("#update").hide()
+			}
+		</script>
+		</body>
+                </html>

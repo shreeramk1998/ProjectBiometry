@@ -1,0 +1,54 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment ="admin-sidebar" id="mySidenav" class="sidenav nav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a th:href="@{/admin}"><i class="fa fa-table"></i> Home </a> 
+    <a th:href="@{/admin/subadmin}"><i class="fa fa-table"></i> Manage SubAdmin</a> 
+    <a th:href="@{/admin/manage-admin}"><i class="fas fa-users"></i> Manage Admin</a>
+    <a th:href="@{/admin/department}"><i class="fas fa-users"></i> Manage Department</a>
+<!--     <a href="#"><i class="fas fa-users"></i> Perge Data</a>
+ -->    <a th:href="@{/logout}" ><i class="fas fa-sign-out-alt"></i> logout</a>
+
+  </div>
+  
+  
+  <div th:fragment ="teacher-sidebar" id="mySidenav" class="sidenav nav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a th:href="@{/teacher/handle-classroom}"><i class="fas fa-users"></i> Handle Classroom</a>
+    <a th:href="@{/teacher/manage-attendance}"><i class="fa fa-table"></i> Manage Attendance</a>
+
+    <!-- <a href="@{/subs}"><i class="fas fa-exchange-alt"></i> Substitute</a> -->
+    <a href="@{/teacher/profile}"><i class="fa fa-user"></i> Manage Me</a>
+	<a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> logout</a>
+        
+    
+  </div>
+  
+  <header th:fragment="header">
+
+    <span class="nav-item" style="float: left;font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
+    <nav  class="navbar navbar-default navbar-fixed-top" >
+
+      <a class="navbar-brand" href="#">Biometry</a>
+
+      <ul class="nav ml-auto justify-content-end">
+
+        <li class="nav-item">
+          Hello
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <th:block th:fragment="navigateScript">
+		<script>
+			function openNav() {
+				document.getElementById("mySidenav").style.width = "180px ";
+			}
+
+			function closeNav() {
+				document.getElementById("mySidenav").style.width = "0";
+			}
+		</script>
+	</th:block>
+  </body>
+</html>

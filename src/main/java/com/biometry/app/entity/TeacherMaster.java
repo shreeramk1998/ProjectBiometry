@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table
+
 public class TeacherMaster {
     public List<CourseMaster> getCourseMasters() {
         return courseMasters;

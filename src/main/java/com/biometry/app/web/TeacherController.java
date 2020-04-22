@@ -1,32 +1,35 @@
 package com.biometry.app.web;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import com.biometry.app.BiometryExceptions.CourseManagementException;
 import com.biometry.app.config.WebSocketHandler;
@@ -41,7 +44,6 @@ import com.biometry.app.service.TeacherService;
 
 @Controller
 @RequestMapping("/teacher")
-@SessionAttributes(names = "Attendees")
 public class TeacherController {
 	@Autowired
 	TeacherService teacherService;
@@ -66,14 +68,15 @@ public class TeacherController {
 	@PostMapping(consumes = "application/json" ,value = "/attendance")
 	@ResponseBody
 	public String saveAttendance(@RequestBody Map<String,String> jsonMap) throws ParseException {
-		//		System.out.println(jsonMap);
-
-		SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
-		Date date = new Date(simpleDate.parse(jsonMap.get("date")).getTime());
-		//		
-		SimpleDateFormat simpleTime = new SimpleDateFormat("hh:mm");
-		java.util.Date dtime = simpleTime.parse(jsonMap.get("time"));
-		Time time = new Time(dtime.getTime());
+				System.out.println(jsonMap);
+				SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
+				Date date = simpleDate.parse(jsonMap.get("date"));
+				SimpleDateFormat simpleTime = new SimpleDateFormat("hh:mm");
+				Date time = simpleTime.parse(jsonMap.get("time"));
+//		Date date = new Date(simpleDate.parse(jsonMap.get("date")).getTime());
+//		//		
+//		java.util.Date dtime = simpleTime.parse(jsonMap.get("time"));
+//		Time time = new Time(dtime.getTime());
 		//		
 		int cmID = Integer.parseInt(jsonMap.get("cmID"));
 		String className = jsonMap.get("className");
@@ -105,13 +108,46 @@ public class TeacherController {
 		return "false";
 
 	}
+	@GetMapping("/manage-attendance")
+	public String getManageAttendance(Model model,HttpSession session) {
+		TeacherMaster tm =(TeacherMaster) session.getAttribute("userSession");
+		
+		model.addAttribute("courseMList", courseManagementService.getCourseMastersByTeacherId(tm.getTeacherID()));
+		model.addAttribute("classList",teacherService.getAllDivisions()) ;
+		return "teacher/manage-attendance";
+	}
+	
+	@GetMapping("/get-report")
+	public void getReport(HttpServletResponse response, HttpSession session,@RequestParam("courseM") int cmID,@RequestParam("class") int divId) throws IOException {
+		System.out.println(cmID+" "+divId);
+		TeacherMaster tm =(TeacherMaster) session.getAttribute("userSession");
+		if(!teacherService.preparePdfContent(tm.getTeacherID(),tm.getTeacherName(), divId, cmID)) {
+			response.sendRedirect("/teacher");
+		}
 
-	@SendTo("/topic/sample")
-	@MessageMapping("/sensors")
-	@CrossOrigin("*")
-	public WebsocketMessage greeting(WebsocketMessage msg) throws Exception {
+		File file = new File(System.getenv("BIOMETRY_HOME") + "\\"+tm.getTeacherID()+".pdf");
+		if (file.exists()) {
 
-		System.out.println(msg);
-		return msg;
+			//get the mimetype
+			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+			if (mimeType == null) {
+				//unknown mimetype so set the mimetype to application/octet-stream
+				mimeType = "application/octet-stream";
+			}
+
+			response.setContentType(mimeType);
+
+			response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
+
+			//Here we have mentioned it to show as attachment
+			//response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
+
+			response.setContentLength((int) file.length());
+
+			InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+
+			FileCopyUtils.copy(inputStream, response.getOutputStream());
+
+		}
 	}
 }

@@ -17,7 +17,9 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import com.biometry.app.entity.Admin;
 import com.biometry.app.entity.TeacherMaster;
+import com.biometry.app.repository.AdminRepository;
 import com.biometry.app.repository.TeacherMasterRepository;
 import com.biometry.app.service.TeacherService;
 @Component("customSuccessRedirectionHandler")
@@ -26,6 +28,8 @@ public class CustomSuccessRedirectionHandler extends SimpleUrlAuthenticationSucc
 	private  HttpSession session;
 	@Autowired
 	TeacherService teacherService;
+	@Autowired
+	AdminRepository adminRepo;
 	@Override
 	protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
@@ -44,18 +48,24 @@ public class CustomSuccessRedirectionHandler extends SimpleUrlAuthenticationSucc
 		UserPrincipal up = (UserPrincipal) auth.getPrincipal();
 		int userId = up.getUser().getId();
 		
+		
+		
 		auth.getAuthorities().forEach(s->roles.add(s.getAuthority()));
 		if(isAdmin(roles)) {
+			this.session.setAttribute("currentUser", up.getUser());
 			return "/admin";
 		}else if(isSubAdmin(roles)) {
+			this.session.setAttribute("currentUser", up.getUser());
 			return "/subAdmin";
 		}else if(isTeacher(roles)) {
+			this.session.setAttribute("currentUser", up.getUser());
 			TeacherMaster teacherMaster = teacherService.getByUserId(userId);
 			if(teacherMaster!= null) {
 				this.session.setAttribute("userSession", teacherMaster);
 			}
 			return "/teacher";
 		}else if (isStudent(roles)) {
+			this.session.setAttribute("currentUser", up.getUser());
 			return "/student";
 		}else {
 			return "/access-denied";
