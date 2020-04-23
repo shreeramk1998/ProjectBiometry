@@ -42,6 +42,8 @@ import com.biometry.app.service.CourseManagementService;
 import com.biometry.app.service.StudentService;
 import com.biometry.app.service.TeacherService;
 
+import net.sf.jasperreports.engine.JRException;
+
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
@@ -118,7 +120,7 @@ public class TeacherController {
 	}
 	
 	@GetMapping("/get-report")
-	public void getReport(HttpServletResponse response, HttpSession session,@RequestParam("courseM") int cmID,@RequestParam("class") int divId) throws IOException {
+	public void getReport(HttpServletResponse response, HttpSession session,@RequestParam("courseM") int cmID,@RequestParam("class") int divId) throws IOException, JRException {
 		System.out.println(cmID+" "+divId);
 		TeacherMaster tm =(TeacherMaster) session.getAttribute("userSession");
 		if(!teacherService.preparePdfContent(tm.getTeacherID(),tm.getTeacherName(), divId, cmID)) {

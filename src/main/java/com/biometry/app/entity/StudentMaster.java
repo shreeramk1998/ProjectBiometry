@@ -19,7 +19,7 @@ public class StudentMaster {
 	private int roll;
 	@Column(nullable=false)
 	private Long phone;
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="divId")
 	private Division div;

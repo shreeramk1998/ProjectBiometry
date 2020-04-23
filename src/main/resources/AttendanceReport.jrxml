@@ -53,13 +53,13 @@
 		</conditionalStyle>
 	</style>
 	<subDataset name="tableDataset" uuid="f13e6d36-5148-4ecc-bbe3-3035def80980">
-		<queryString>
-			<![CDATA[]]>
-		</queryString>
-	</subDataset>
-	
-	<field name="studentMaster.roll" class="java.lang.Integer">
 		
+	</subDataset>
+	<parameter name = "className" class = "java.lang.String"/>
+   <parameter name = "courseName" class = "java.lang.String"/>
+	<parameter name = "teacherName" class = "java.lang.String"/>
+		
+	<field name="studentMaster.roll" class="java.lang.Integer">
 	</field>
 	<field name="studentMaster.studName" class="java.lang.String">
 	</field>
@@ -72,12 +72,12 @@
 	<title>
 		<band height="141" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="90" width="84" height="25" uuid="57aed2b1-4f4e-40a3-a6ad-54dae8dd4c5a">
+				<reportElement x="0" y="93" width="70" height="25" uuid="57aed2b1-4f4e-40a3-a6ad-54dae8dd4c5a">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font size="16" isBold="true"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Course:]]></text>
 			</staticText>
@@ -88,12 +88,12 @@
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="410" y="90" width="84" height="25" uuid="139ebe8d-25b0-411e-986c-270015400874">
+				<reportElement x="370" y="93" width="80" height="25" uuid="139ebe8d-25b0-411e-986c-270015400874">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font size="16" isBold="true"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Teacher:]]></text>
 			</staticText>
@@ -115,19 +115,40 @@
 				<textElement>
 					<font size="19" isBold="true"/>
 				</textElement>
-				<text><![CDATA[MMCOE Attendance Report]]></text>
+				<text><![CDATA[MMCOE ATTENDANCE RECORD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="210" y="90" width="84" height="25" uuid="33cdad90-b155-432d-bc93-f51c52e352d0">
+				<reportElement x="200" y="93" width="60" height="25" uuid="33cdad90-b155-432d-bc93-f51c52e352d0">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement>
-					<font size="16" isBold="true"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Class :]]></text>
 			</staticText>
 			
+			<textField>
+				<reportElement x="450" y="93" width="75" height="25" uuid="edcb68d1-d78b-4188-9596-ca0520143a6c"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{teacherName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="93" width="90" height="25" uuid="70f82263-77d8-46d9-acc4-077a642f263d"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{className}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="93" width="90" height="25" uuid="1c8f79e2-6a5f-4660-8e2b-c69fd43bb48a"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{courseName}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>

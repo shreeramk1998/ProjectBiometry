@@ -1,11 +1,15 @@
 package com.biometry.app.service;
 
+import com.biometry.app.entity.AttendanceMaster;
 import com.biometry.app.entity.CourseMaster;
 import com.biometry.app.entity.Division;
 import com.biometry.app.entity.TeacherMaster;
+import com.biometry.app.repository.AttendanceMasterRepository;
 import com.biometry.app.repository.CourseMasterRepository;
 import com.biometry.app.repository.DivRepository;
 import com.biometry.app.repository.TeacherMasterRepository;
+
+import net.sf.jasperreports.engine.JRException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +36,8 @@ public class TeacherService {
     ReportService reportService;
     @Autowired
     CourseMasterRepository courseMasterRepository;
-    
+    @Autowired
+    AttendanceMasterRepository attendanceMasterRepository;
     public static Map<String,String> classroomIP = new HashMap<String, String>();
 	static {
 		File folder = new File(System.getenv("BIOMETRY_HOME"));
@@ -119,14 +124,16 @@ public class TeacherService {
     	return divRepository.findAll();
     }
    
-    public boolean preparePdfContent(int id,String name,int divId,int cmID) {
+    public boolean preparePdfContent(int id,String name,int divId,int cmID) throws FileNotFoundException, JRException {
     	Map<String, Object> parameter = new HashMap<>();
     	parameter.put("teacherName", name);
-    	parameter.put("className", divRepository.findById(id).get());
+    	parameter.put("className", divRepository.findById(id).get().getDivName());
     	CourseMaster cm = courseMasterRepository.findById(cmID).get();
     	parameter.put("courseName", cm.getCourse().getCourseName());
-//    	reportService.exportReport(Integer.toString(id), parameter, list)
-    	return true;
+    	List <AttendanceMaster> list = attendanceMasterRepository.findAttendanceListByCourseMasterAndDivision(cmID,divId);
+    	
+    	
+    	return reportService.exportReport(Integer.toString(id), parameter, list);
     }
     
     

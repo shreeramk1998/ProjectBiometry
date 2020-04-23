@@ -26,14 +26,14 @@ public class ReportService {
 
 	@Autowired
 	AttendanceMasterRepository attendanceMasterrepo;
-	public String exportReport(String filename,Map parameter,List list) throws JRException, FileNotFoundException {
+	public boolean exportReport(String filename,Map<String, Object> parameter,List list) throws JRException, FileNotFoundException {
 		File file =  ResourceUtils.getFile("classpath:AttendanceReport.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(list);
-		
+		System.out.println(parameter);
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter,dataSource);
 		JasperExportManager.exportReportToPdfFile(jasperPrint, System.getenv("BIOMETRY_HOME")+"\\"+filename+".pdf");
-		return "";
+		return true;
 	}
 	
 }
