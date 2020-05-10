@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1e137de6-f55d-4725-ab94-c35d0ec79e4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Workspace_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Workspace_war_exploded.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biometry/app/web/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/biometry/app/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/biometry/app/web/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Workspace.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Workspace.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,17 +71,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="Workspace/invalid/JPA" />
+      <facet id="Workspace/invalid/Spring" />
+      <facet id="Workspace/invalid/Web" />
+    </ignored-facets>
   </component>
   <component name="ProjectId" id="1XQTfBUxthF6u4Cp7TazIUD7kOF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -71,6 +90,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -80,6 +100,10 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RunManager">
     <configuration name="BiometryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -90,24 +114,12 @@
       </method>
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9f09e1fa-24f8-4c4a-b37d-7c68400043e7" name="Default Changelist" comment="" />
+      <changelist id="1e137de6-f55d-4725-ab94-c35d0ec79e4e" name="Default Changelist" comment="" />
       <created>1580977420049</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -128,6 +140,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
@@ -140,6 +163,10 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="543" y="124" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832@0.0.1536.832" timestamp="1581579025720" />
+    <state x="423" y="67" width="575" height="668" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1589141039428">
+      <screen x="66" y="27" width="1300" height="741" />
+    </state>
+    <state x="423" y="67" width="575" height="668" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/66.27.1300.741@66.27.1300.741" timestamp="1589141039428" />
     <state x="359" y="16" key="CommitChangelistDialog2" timestamp="1581594994688">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
@@ -180,9 +207,21 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.832@0.0.1536.832" timestamp="1581578187576" />
+    <state x="199" y="27" width="1024" height="741" key="SettingsEditor" timestamp="1589141021289">
+      <screen x="66" y="27" width="1300" height="741" />
+    </state>
+    <state x="199" y="27" width="1024" height="741" key="SettingsEditor/66.27.1300.741@66.27.1300.741" timestamp="1589141021289" />
+    <state width="498" height="398" key="SwitcherDM" timestamp="1589140499846">
+      <screen x="66" y="27" width="1300" height="741" />
+    </state>
+    <state width="498" height="398" key="SwitcherDM/66.27.1300.741@66.27.1300.741" timestamp="1589140499846" />
     <state x="477" y="245" key="com.intellij.ide.util.TipDialog" timestamp="1581583459718">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="477" y="245" key="com.intellij.ide.util.TipDialog/0.0.1536.832@0.0.1536.832" timestamp="1581583459718" />
+    <state x="379" y="89" key="search.everywhere.popup" timestamp="1589140525326">
+      <screen x="66" y="27" width="1300" height="741" />
+    </state>
+    <state x="379" y="89" key="search.everywhere.popup/66.27.1300.741@66.27.1300.741" timestamp="1589140525326" />
   </component>
 </project>

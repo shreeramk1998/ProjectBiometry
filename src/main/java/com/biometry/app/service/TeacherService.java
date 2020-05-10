@@ -6,7 +6,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TeacherService {
-    @Autowired
-    private TeacherMasterRepository teacherMasterRepository;
     
 }
